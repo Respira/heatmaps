@@ -84,6 +84,27 @@
             font-weight: 500;
             font-size: 15px;
         }
+        .list .client-number {
+            font-size: 11px;
+            color: #94a3b8;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            min-width: 28px;
+        }
+        .list a.highlight {
+            background: linear-gradient(135deg, #eef4ff, #f0f7ff);
+            border-color: #1a73e8;
+        }
+        .list a.highlight .icon {
+            background: linear-gradient(135deg, #0f4c81, #1a73e8);
+            color: white;
+            font-size: 18px;
+        }
+        .list a.highlight .name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #0f4c81;
+        }
         .empty {
             text-align: center;
             padding: 48px 24px;
@@ -114,11 +135,12 @@
     </div>
 
     <script>
-        // Auto-discover heatmap HTML files via GitHub Pages directory listing
-        // Since GitHub Pages doesn't support directory listing, we maintain a manifest
+        // Manifest maintained by SuperTron /client-heatmap command
+        // Each entry: { slug, name, clientNumber }
+        // clientNumber "000" = "All UK Clients" aggregate (always first)
         const heatmaps = [
-            { slug: "northamptonshire-nhs", name: "Northamptonshire NHS" },
-            { slug: "swansea-bay", name: "Swansea Bay" }
+            { slug: "northamptonshire-nhs", name: "Northamptonshire NHS", clientNumber: "999" },
+            { slug: "swansea-bay", name: "Swansea Bay", clientNumber: "999" }
         ];
 
         const list = document.getElementById('heatmap-list');
@@ -126,14 +148,30 @@
         if (heatmaps.length === 0) {
             list.innerHTML = '<div class="empty">No heatmaps generated yet.</div>';
         } else {
-            list.innerHTML = heatmaps
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map(h => `
-                    <a href="${h.slug}.html">
-                        <div class="icon">&#x1F5FA;</div>
-                        <div class="name">${h.name}</div>
+            // Separate "All UK" (clientNumber "000") from individual clients
+            const allUk = heatmaps.filter(h => h.clientNumber === '000');
+            const clients = heatmaps
+                .filter(h => h.clientNumber !== '000')
+                .sort((a, b) => parseInt(a.clientNumber, 10) - parseInt(b.clientNumber, 10));
+
+            const renderEntry = (h, isHighlight) => {
+                const cssClass = isHighlight ? ' class="highlight"' : '';
+                const icon = isHighlight ? '&#x1F30D;' : '&#x1F5FA;';
+                const numberPrefix = (!isHighlight && h.clientNumber !== '999')
+                    ? `<span class="client-number">${h.clientNumber}</span>` : '';
+                const displayName = (!isHighlight && h.clientNumber !== '999')
+                    ? `${h.clientNumber} &mdash; ${h.name}` : h.name;
+                return `
+                    <a href="${h.slug}.html"${cssClass}>
+                        <div class="icon">${icon}</div>
+                        <div class="name">${displayName}</div>
                     </a>
-                `).join('');
+                `;
+            };
+
+            const allUkHtml = allUk.map(h => renderEntry(h, true)).join('');
+            const clientsHtml = clients.map(h => renderEntry(h, false)).join('');
+            list.innerHTML = allUkHtml + clientsHtml;
         }
     </script>
 </body>
