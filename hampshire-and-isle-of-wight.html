@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hampshire and Isle of Wight Healthcare NHS Foundation Trust — User Heatmap</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8f9fa;
+            color: #1a1a2e;
+        }
+
+        .header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #0f4c81, #1a73e8);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .header-title h1 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .header-title .subtitle {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: #0f4c81;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 32px;
+            background: #e2e8f0;
+        }
+
+        #map {
+            width: 100%;
+            height: calc(100vh - 72px);
+        }
+
+        .legend {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .legend h4 {
+            margin-bottom: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-circle {
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .branding {
+            position: fixed;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.9);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 10px;
+            color: #94a3b8;
+            z-index: 1000;
+            pointer-events: none;
+        }
+
+        .tooltip-custom {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .no-data-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 32px 48px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .no-data-overlay h2 {
+            font-size: 18px;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+
+        .no-data-overlay p {
+            font-size: 14px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <div class="logo">SP</div>
+            <div class="header-title">
+                <h1>Hampshire and Isle of Wight Healthcare NHS Foundation Trust</h1>
+                <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 24 Feb 2026</div>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value">12</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-label">On Map</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <div class="stat-value">3</div>
+                <div class="stat-label">Cities</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="branding">Generated by SuperTron &middot; 24 Feb 2026</div>
+
+    <script>
+        // City data injected by SuperTron
+        const cityData = [{"city": "Basingstoke", "users": 2}, {"city": "Portsmouth", "users": 2}, {"city": "Southampton", "users": 1}];
+
+        // UK city coordinates (~80 major cities)
+        const cityCoords = {
+            "Aberdare": [51.7150, -3.4430],
+            "Aberdeen": [57.1497, -2.0943],
+            "Ashford": [51.1458, 0.8710],
+            "Aylesbury": [51.8168, -0.8124],
+            "Banbury": [52.0600, -1.3396],
+            "Barnsley": [53.5529, -1.4791],
+            "Basildon": [51.5761, 0.4886],
+            "Basingstoke": [51.2667, -1.0876],
+            "Bath": [51.3811, -2.3590],
+            "Bedford": [52.1356, -0.4685],
+            "Belfast": [54.5973, -5.9301],
+            "Birmingham": [52.4862, -1.8904],
+            "Blackburn": [53.7485, -2.4848],
+            "Blackwood": [51.6677, -3.1947],
+            "Blackpool": [53.8142, -3.0503],
+            "Bolton": [53.5785, -2.4299],
+            "Bournemouth": [50.7192, -1.8808],
+            "Bradford": [53.7960, -1.7594],
+            "Bridgend": [51.5042, -3.5764],
+            "Brighton": [50.8225, -0.1372],
+            "Bristol": [51.4545, -2.5879],
+            "Buckingham": [51.9948, -0.9877],
+            "Burnley": [53.7890, -2.2481],
+            "Burton upon Trent": [52.8022, -1.6355],
+            "Bury": [53.5938, -2.2972],
+            "Camberley": [51.3370, -0.7673],
+            "Caerphilly": [51.5784, -3.2180],
+            "Cambridge": [52.2053, 0.1218],
+            "Camden": [51.5390, -0.1426],
+            "Canterbury": [51.2802, 1.0789],
+            "Cardiff": [51.4816, -3.1791],
+            "Carlisle": [54.8951, -2.9382],
+            "Chelmsford": [51.7356, 0.4685],
+            "Cheltenham": [51.8994, -2.0783],
+            "Chester": [53.1905, -2.8909],
+            "Chesterfield": [53.2350, -1.4216],
+            "Colchester": [51.8891, 0.9037],
+            "City of London": [51.5155, -0.0922],
+            "City of Westminster": [51.4975, -0.1357],
+            "Corby": [52.4880, -0.6915],
+            "Coventry": [52.4068, -1.5197],
+            "Crawley": [51.1092, -0.1872],
+            "Crewe": [53.0990, -2.4416],
+            "Croydon": [51.3762, -0.0982],
+            "Dagenham": [51.5444, 0.1546],
+            "Darlington": [54.5270, -1.5520],
+            "Daventry": [52.2578, -1.1630],
+            "Derby": [52.9225, -1.4746],
+            "Doncaster": [53.5228, -1.1285],
+            "Dudley": [52.5085, -2.0850],
+            "Dundee": [56.4620, -2.9707],
+            "Durham": [54.7761, -1.5733],
+            "Eastbourne": [50.7685, 0.2906],
+            "Edinburgh": [55.9533, -3.1883],
+            "Exeter": [50.7236, -3.5275],
+            "Fareham": [50.8520, -1.1782],
+            "Fulham": [51.4828, -0.1950],
+            "Glasgow": [55.8642, -4.2518],
+            "Gloucester": [51.8642, -2.2382],
+            "Gravesend": [51.4415, 0.3685],
+            "Great Missenden": [51.7042, -0.7100],
+            "Grimsby": [53.5670, -0.0808],
+            "Guildford": [51.2362, -0.5704],
+            "Halifax": [53.7251, -1.8630],
+            "Harrogate": [53.9921, -1.5418],
+            "Hastings": [50.8541, 0.5729],
+            "Hengoed": [51.6416, -3.2260],
+            "Hereford": [52.0565, -2.7160],
+            "High Wycombe": [51.6293, -0.7482],
+            "Huddersfield": [53.6450, -1.7798],
+            "Hull": [53.7676, -0.3274],
+            "Ipswich": [52.0567, 1.1482],
+            "Kettering": [52.3931, -0.7229],
+            "Lambeth": [51.4571, -0.1231],
+            "Lancaster": [54.0466, -2.8007],
+            "Leeds": [53.8008, -1.5491],
+            "Leighton Buzzard": [51.9165, -0.6617],
+            "Leicester": [52.6369, -1.1398],
+            "Lincoln": [53.2307, -0.5406],
+            "Liverpool": [53.4084, -2.9916],
+            "London": [51.5074, -0.1278],
+            "Luton": [51.8787, -0.4200],
+            "Maesteg": [51.6100, -3.6557],
+            "Maidstone": [51.2724, 0.5225],
+            "Manchester": [53.4808, -2.2426],
+            "Mansfield": [53.1472, -1.1981],
+            "Molesey": [51.3961, -0.3618],
+            "Middlesbrough": [54.5742, -1.2348],
+            "Milton Keynes": [52.0406, -0.7594],
+            "Neath": [51.6603, -3.8036],
+            "Newcastle upon Tyne": [54.9783, -1.6178],
+            "Newport": [51.5842, -2.9977],
+            "Northampton": [52.2405, -0.9027],
+            "Norwich": [52.6309, 1.2974],
+            "Nottingham": [52.9548, -1.1581],
+            "Oldham": [53.5409, -2.1114],
+            "Oxford": [51.7520, -1.2577],
+            "Peterborough": [52.5695, -0.2405],
+            "Plymouth": [50.3755, -4.1427],
+            "Port Talbot": [51.5907, -3.7985],
+            "Porth": [51.6133, -3.4085],
+            "Poole": [50.7151, -1.9871],
+            "Portsmouth": [50.8198, -1.0880],
+            "Preston": [53.7632, -2.7031],
+            "Putney": [51.4610, -0.2160],
+            "Reading": [51.4543, -0.9781],
+            "Redditch": [52.3065, -1.9453],
+            "Redhill": [51.2403, -0.1707],
+            "Rochdale": [53.6097, -2.1561],
+            "Rotherham": [53.4326, -1.3635],
+            "Rugby": [52.3708, -1.2617],
+            "Rushden": [52.2879, -0.6009],
+            "Salford": [53.4875, -2.2901],
+            "Salisbury": [51.0688, -1.7945],
+            "Sheffield": [53.3811, -1.4701],
+            "Shrewsbury": [52.7074, -2.7546],
+            "Slough": [51.5105, -0.5950],
+            "Solihull": [52.4120, -1.7780],
+            "Southampton": [50.9097, -1.4044],
+            "Southend-on-Sea": [51.5459, 0.7077],
+            "Southwark": [51.5028, -0.0877],
+            "St Asaph": [53.2582, -3.4420],
+            "Sudbury": [52.0395, 0.7292],
+            "St Albans": [51.7553, -0.3361],
+            "Stafford": [52.8061, -2.1167],
+            "Stoke-on-Trent": [53.0027, -2.1794],
+            "Sunderland": [54.9069, -1.3838],
+            "Swansea": [51.6214, -3.9436],
+            "Swindon": [51.5558, -1.7797],
+            "Taunton": [51.0151, -3.1009],
+            "Telford": [52.6766, -2.4469],
+            "Tottenham": [51.5882, -0.0720],
+            "Towcester": [52.1326, -0.9939],
+            "Tring": [51.7952, -0.6596],
+            "Wakefield": [53.6833, -1.4977],
+            "Walsall": [52.5862, -1.9829],
+            "Walthamstow": [51.5842, -0.0210],
+            "Wantage": [51.5878, -1.4270],
+            "Warrington": [53.3900, -2.5970],
+            "Warwick": [52.2820, -1.5849],
+            "Watford": [51.6565, -0.3973],
+            "Wellingborough": [52.3026, -0.6940],
+            "Wembley": [51.5528, -0.2979],
+            "Wigan": [53.5448, -2.6318],
+            "Winchester": [51.0632, -1.3080],
+            "Witney": [51.7863, -1.4854],
+            "Woking": [51.3162, -0.5613],
+            "Wolverhampton": [52.5870, -2.1288],
+            "Worcester": [52.1936, -2.2216],
+            "Worthing": [50.8148, -0.3726],
+            "York": [53.9591, -1.0815]
+        };
+
+        // Initialise map centered on UK
+        const map = L.map('map', {
+            zoomControl: true,
+            attributionControl: true
+        }).setView([53.5, -2.5], 6);
+
+        // CartoDB Positron tiles (clean, minimal look)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Color scale: light blue to deep navy
+        function getColor(users, maxUsers) {
+            const ratio = Math.min(users / maxUsers, 1);
+            // Interpolate from #93c5fd (light blue) to #1e3a5f (deep navy)
+            const r = Math.round(147 + (30 - 147) * ratio);
+            const g = Math.round(197 + (58 - 197) * ratio);
+            const b = Math.round(253 + (95 - 253) * ratio);
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+
+        // Radius scale: 8px minimum, 40px maximum
+        function getRadius(users, maxUsers) {
+            const ratio = Math.min(users / maxUsers, 1);
+            return 8 + ratio * 32;
+        }
+
+        // Render markers
+        if (cityData.length > 0) {
+            const maxUsers = Math.max(...cityData.map(d => d.users));
+            let matched = 0;
+            let skipped = [];
+
+            cityData.forEach(item => {
+                const coords = cityCoords[item.city];
+                if (!coords) {
+                    skipped.push(item.city);
+                    console.warn(`City not in lookup: "${item.city}" (${item.users} users)`);
+                    return;
+                }
+
+                matched++;
+                const circle = L.circleMarker(coords, {
+                    radius: getRadius(item.users, maxUsers),
+                    fillColor: getColor(item.users, maxUsers),
+                    fillOpacity: 0.75,
+                    color: '#0f4c81',
+                    weight: 1.5,
+                    opacity: 0.9
+                }).addTo(map);
+
+                circle.bindTooltip(
+                    `<strong>${item.city}</strong><br>${item.users} user${item.users !== 1 ? 's' : ''}`,
+                    { className: 'tooltip-custom', direction: 'top', offset: [0, -8] }
+                );
+            });
+
+            if (skipped.length > 0) {
+                console.log(`Skipped ${skipped.length} cities not in lookup:`, skipped);
+            }
+
+            // Auto-fit bounds to markers if we have data
+            if (matched > 1) {
+                const bounds = cityData
+                    .filter(d => cityCoords[d.city])
+                    .map(d => cityCoords[d.city]);
+                map.fitBounds(bounds, { padding: [50, 50], maxZoom: 10 });
+            } else if (matched === 1) {
+                const single = cityData.find(d => cityCoords[d.city]);
+                if (single) {
+                    map.setView(cityCoords[single.city], 9);
+                }
+            }
+        } else {
+            // No data overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'no-data-overlay';
+            overlay.innerHTML = '<h2>No user data</h2><p>No geographic data found for this client and date range.</p>';
+            document.body.appendChild(overlay);
+        }
+
+        // Legend
+        const legend = L.control({ position: 'bottomright' });
+        legend.onAdd = function() {
+            const div = L.DomUtil.create('div', 'legend');
+            if (cityData.length === 0) {
+                div.innerHTML = '<h4>No data</h4>';
+                return div;
+            }
+            const maxUsers = Math.max(...cityData.map(d => d.users));
+            const low = Math.max(1, Math.round(maxUsers * 0.2));
+            const mid = Math.round(maxUsers * 0.5);
+            const high = maxUsers;
+
+            div.innerHTML = `
+                <h4>Users per city</h4>
+                <div class="legend-row">
+                    <span class="legend-circle" style="width:12px;height:12px;background:${getColor(low, maxUsers)}"></span>
+                    <span>${low}</span>
+                </div>
+                <div class="legend-row">
+                    <span class="legend-circle" style="width:18px;height:18px;background:${getColor(mid, maxUsers)}"></span>
+                    <span>${mid}</span>
+                </div>
+                <div class="legend-row">
+                    <span class="legend-circle" style="width:24px;height:24px;background:${getColor(high, maxUsers)}"></span>
+                    <span>${high}</span>
+                </div>
+            `;
+            return div;
+        };
+        legend.addTo(map);
+    </script>
+</body>
+</html>
