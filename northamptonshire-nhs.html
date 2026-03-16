@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All UK Clients — User Heatmap</title>
+    <title>Northamptonshire Healthcare NHS Foundation Trust — User Heatmap</title>
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="All UK Clients — User Heatmap">
-    <meta property="og:description" content="1793 users across 9 cities — SuperPenguin geographic distribution (1 Jul 2025 – 16 Mar 2026).">
+    <meta property="og:title" content="Northamptonshire Healthcare NHS Foundation Trust — User Heatmap">
+    <meta property="og:description" content="175 users across 9 cities — SuperPenguin geographic distribution (1 Jul 2025 – 16 Mar 2026).">
     <meta property="og:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <!-- Twitter / Slack -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="All UK Clients — User Heatmap">
-    <meta name="twitter:description" content="1793 users across 9 cities — SuperPenguin geographic distribution (1 Jul 2025 – 16 Mar 2026).">
+    <meta name="twitter:title" content="Northamptonshire Healthcare NHS Foundation Trust — User Heatmap">
+    <meta name="twitter:description" content="175 users across 9 cities — SuperPenguin geographic distribution (1 Jul 2025 – 16 Mar 2026).">
     <meta name="twitter:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -264,18 +264,18 @@
         <div class="header-left">
             <div class="logo">SP</div>
             <div class="header-title">
-                <h1>All UK Clients</h1>
+                <h1>Northamptonshire Healthcare NHS Foundation Trust</h1>
                 <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 16 Mar 2026</div>
             </div>
         </div>
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">1793</div>
+                <div class="stat-value">175</div>
                 <div class="stat-label">Total Users</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">454</div>
+                <div class="stat-value">65</div>
                 <div class="stat-label">On Map</div>
             </div>
             <div class="stat-divider"></div>
@@ -300,10 +300,10 @@
 
     <script>
         // City data injected by SuperTron
-        const cityData = [{"city": "Birmingham", "users": 216}, {"city": "Cardiff", "users": 38}, {"city": "Southend-on-Sea", "users": 37}, {"city": "London", "users": 32}, {"city": "Northampton", "users": 31}, {"city": "Swansea", "users": 28}, {"city": "City of London", "users": 27}, {"city": "Manchester", "users": 25}, {"city": "Telford", "users": 20}];
+        const cityData = [{"city": "Northampton", "users": 24}, {"city": "Kettering", "users": 12}, {"city": "Corby", "users": 5}, {"city": "London", "users": 5}, {"city": "Luton", "users": 5}, {"city": "Bedford", "users": 4}, {"city": "Coventry", "users": 4}, {"city": "Rushden", "users": 3}, {"city": "Sudbury", "users": 3}];
 
         // Catchment bounds: [[swLat, swLng], [neLat, neLng]] or null for whole-UK view
-        const catchmentBounds = null;
+        const catchmentBounds = [[51.95, -1.45], [52.75, -0.3]];
 
         // UK city coordinates (~80 major cities)
         const cityCoords = {
