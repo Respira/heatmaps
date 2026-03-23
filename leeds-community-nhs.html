@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airedale NHS Foundation Trust — User Heatmap</title>
+    <title>Leeds Community Healthcare NHS — User Heatmap</title>
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Airedale NHS Foundation Trust — User Heatmap">
-    <meta property="og:description" content="5 users across 1 cities — SuperPenguin geographic distribution (1 Jul 2025 – 24 Feb 2026).">
+    <meta property="og:title" content="Leeds Community Healthcare NHS — User Heatmap">
+    <meta property="og:description" content="4 users across 1 cities — SuperPenguin geographic distribution (1 Jul 2025 – 23 Mar 2026).">
     <meta property="og:image" content="https://respira.github.io/heatmaps/og-image.png">
-    <meta property="og:url" content="https://respira.github.io/heatmaps/airedale.html">
 
     <!-- Twitter / Slack -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Airedale NHS Foundation Trust — User Heatmap">
-    <meta name="twitter:description" content="5 users across 1 cities — SuperPenguin geographic distribution (1 Jul 2025 – 24 Feb 2026).">
+    <meta name="twitter:title" content="Leeds Community Healthcare NHS — User Heatmap">
+    <meta name="twitter:description" content="4 users across 1 cities — SuperPenguin geographic distribution (1 Jul 2025 – 23 Mar 2026).">
     <meta name="twitter:image" content="https://respira.github.io/heatmaps/og-image.png">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -101,7 +102,90 @@
 
         #map {
             width: 100%;
-            height: calc(100vh - 72px);
+            height: 65vh;
+        }
+
+        .city-list {
+            max-width: 800px;
+            margin: 24px auto;
+            padding: 0 24px;
+        }
+
+        .city-list h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 12px;
+        }
+
+        .city-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .city-table thead th {
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid #e2e8f0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .city-table thead th:last-child {
+            text-align: right;
+        }
+
+        .city-table tbody td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1a1a2e;
+        }
+
+        .city-table tbody td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: #0f4c81;
+        }
+
+        .city-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .city-table tbody tr.hidden-row {
+            display: none;
+        }
+
+        .city-table tbody tr.hidden-row.show-all {
+            display: table-row;
+        }
+
+        .city-bar {
+            display: inline-block;
+            height: 6px;
+            border-radius: 3px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .show-all-btn {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 6px 16px;
+            font-size: 13px;
+            color: #0f4c81;
+            background: #f0f4ff;
+            border: 1px solid #dbeafe;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .show-all-btn:hover {
+            background: #dbeafe;
         }
 
         .legend {
@@ -120,29 +204,25 @@
             color: #1a1a2e;
         }
 
-        .legend-row {
+        .legend-gradient {
             display: flex;
             align-items: center;
             gap: 8px;
+            margin-top: 4px;
         }
 
-        .legend-circle {
-            border-radius: 50%;
-            flex-shrink: 0;
+        .legend-gradient-bar {
+            width: 100px;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #bfdbfe 0%, #93c5fd 20%, #60a5fa 40%, #3b82f6 60%, #2563eb 80%, #1e3a5f 100%);
         }
 
         .branding {
-            position: fixed;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255,255,255,0.9);
-            padding: 4px 12px;
-            border-radius: 12px;
+            text-align: center;
+            padding: 12px;
             font-size: 10px;
             color: #94a3b8;
-            z-index: 1000;
-            pointer-events: none;
         }
 
         .tooltip-custom {
@@ -184,18 +264,18 @@
         <div class="header-left">
             <div class="logo">SP</div>
             <div class="header-title">
-                <h1>Airedale NHS Foundation Trust</h1>
-                <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 24 Feb 2026</div>
+                <h1>Leeds Community Healthcare NHS</h1>
+                <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 23 Mar 2026</div>
             </div>
         </div>
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">5</div>
+                <div class="stat-value">4</div>
                 <div class="stat-label">Total Users</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">2</div>
+                <div class="stat-value">1</div>
                 <div class="stat-label">On Map</div>
             </div>
             <div class="stat-divider"></div>
@@ -208,11 +288,22 @@
 
     <div id="map"></div>
 
-    <div class="branding">Generated by SuperTron &middot; 24 Feb 2026</div>
+    <div class="city-list">
+        <h3>User Distribution by City</h3>
+        <table class="city-table">
+            <thead><tr><th>City</th><th>Users</th></tr></thead>
+            <tbody id="city-table-body"></tbody>
+        </table>
+    </div>
+
+    <div class="branding">Generated by SuperTron &middot; 23 Mar 2026 18:31</div>
 
     <script>
         // City data injected by SuperTron
-        const cityData = [{"city": "Preston", "users": 2}];
+        const cityData = [{"city": "Bradford", "users": 1}];
+
+        // Catchment bounds: [[swLat, swLng], [neLat, neLng]] or null for whole-UK view
+        const catchmentBounds = [[53.7, -1.7], [53.9, -1.35]];
 
         // UK city coordinates (~80 major cities)
         const cityCoords = {
@@ -369,6 +460,11 @@
             "York": [53.9591, -1.0815]
         };
 
+        // Approximate geographic radius per city (in degrees, ~1 degree = 111km)
+        // Larger cities get a wider spread; small towns get a tighter spread
+        const citySize = {"London":0.08,"Birmingham":0.045,"Manchester":0.04,"Glasgow":0.04,"Leeds":0.035,"Liverpool":0.035,"Edinburgh":0.03,"Sheffield":0.035,"Bristol":0.03,"Newcastle upon Tyne":0.03,"Nottingham":0.03,"Leicester":0.025,"Coventry":0.025,"Cardiff":0.03,"Belfast":0.03,"Brighton":0.02,"Plymouth":0.02,"Derby":0.02,"Southampton":0.02,"Portsmouth":0.02,"Wolverhampton":0.02,"Stoke-on-Trent":0.025,"Northampton":0.025,"Peterborough":0.02,"Cambridge":0.02,"Oxford":0.018,"Reading":0.018,"Luton":0.018,"Milton Keynes":0.025,"Bedford":0.015,"Slough":0.012,"Swindon":0.018,"Swansea":0.025,"Aberdeen":0.025,"Dundee":0.02,"Hull":0.02,"Bradford":0.025,"York":0.015,"Exeter":0.015,"Norwich":0.015,"Ipswich":0.015,"Bournemouth":0.015,"Bath":0.012,"Gloucester":0.012,"Cheltenham":0.012,"Worcester":0.012,"Lincoln":0.012,"Kettering":0.012,"Corby":0.012,"Wellingborough":0.01,"Daventry":0.008,"Rushden":0.008,"Rugby":0.012,"Towcester":0.006,"Brackley":0.006,"Buckingham":0.006,"Watford":0.01,"St Albans":0.01,"Aylesbury":0.01,"High Wycombe":0.012,"Banbury":0.01,"Warwick":0.008,"Harrogate":0.01,"Chester":0.012,"Carlisle":0.012,"Lancaster":0.01,"Preston":0.02,"Blackpool":0.015,"Bolton":0.02,"Wigan":0.02,"Oldham":0.015,"Rochdale":0.015,"Huddersfield":0.018,"Halifax":0.012,"Wakefield":0.015,"Doncaster":0.018,"Rotherham":0.015,"Barnsley":0.012,"Mansfield":0.012,"Chesterfield":0.012,"Crewe":0.01,"Stafford":0.01,"Telford":0.018,"Shrewsbury":0.012};
+        const DEFAULT_SIZE = 0.008;
+
         // Initialise map centered on UK
         const map = L.map('map', {
             zoomControl: true,
@@ -382,27 +478,18 @@
             maxZoom: 19
         }).addTo(map);
 
-        // Color scale: light blue to deep navy
-        function getColor(users, maxUsers) {
-            const ratio = Math.min(users / maxUsers, 1);
-            // Interpolate from #93c5fd (light blue) to #1e3a5f (deep navy)
-            const r = Math.round(147 + (30 - 147) * ratio);
-            const g = Math.round(197 + (58 - 197) * ratio);
-            const b = Math.round(253 + (95 - 253) * ratio);
-            return `rgb(${r}, ${g}, ${b})`;
-        }
-
-        // Radius scale: 8px minimum, 40px maximum
-        function getRadius(users, maxUsers) {
-            const ratio = Math.min(users / maxUsers, 1);
-            return 8 + ratio * 32;
-        }
-
-        // Render markers
+        // Render heat layer and city table
         if (cityData.length > 0) {
             const maxUsers = Math.max(...cityData.map(d => d.users));
             let matched = 0;
             let skipped = [];
+
+            // Generate jittered heat data points
+            const heatData = [];
+            function seededRandom(seed) {
+                const x = Math.sin(seed) * 10000;
+                return x - Math.floor(x);
+            }
 
             cityData.forEach(item => {
                 const coords = cityCoords[item.city];
@@ -411,29 +498,59 @@
                     console.warn(`City not in lookup: "${item.city}" (${item.users} users)`);
                     return;
                 }
-
                 matched++;
-                const circle = L.circleMarker(coords, {
-                    radius: getRadius(item.users, maxUsers),
-                    fillColor: getColor(item.users, maxUsers),
-                    fillOpacity: 0.75,
-                    color: '#0f4c81',
-                    weight: 1.5,
-                    opacity: 0.9
-                }).addTo(map);
-
-                circle.bindTooltip(
-                    `<strong>${item.city}</strong><br>${item.users} user${item.users !== 1 ? 's' : ''}`,
-                    { className: 'tooltip-custom', direction: 'top', offset: [0, -8] }
-                );
+                const spread = citySize[item.city] || DEFAULT_SIZE;
+                for (let i = 0; i < item.users; i++) {
+                    heatData.push([
+                        coords[0] + (seededRandom(i * 7 + 1) - 0.5) * spread * 2,
+                        coords[1] + (seededRandom(i * 13 + 3) - 0.5) * spread * 2
+                    ]);
+                }
             });
 
             if (skipped.length > 0) {
                 console.log(`Skipped ${skipped.length} cities not in lookup:`, skipped);
             }
 
-            // Auto-fit bounds to markers if we have data
-            if (matched > 1) {
+            // Heat layer with blue-only gradient
+            L.heatLayer(heatData, {
+                radius: 25,
+                blur: 20,
+                maxZoom: 18,
+                minOpacity: 0.3,
+                gradient: {
+                    0.0: 'rgba(219,234,254,0)',
+                    0.1: '#bfdbfe',
+                    0.25: '#93c5fd',
+                    0.4: '#60a5fa',
+                    0.55: '#3b82f6',
+                    0.7: '#2563eb',
+                    0.85: '#1d4ed8',
+                    1.0: '#1e3a5f'
+                }
+            }).addTo(map);
+
+            // White dot markers for hover tooltips
+            cityData.forEach(item => {
+                const coords = cityCoords[item.city];
+                if (!coords) return;
+                L.circleMarker(coords, {
+                    radius: 4,
+                    fillColor: '#fff',
+                    fillOpacity: 0.9,
+                    color: '#0f4c81',
+                    weight: 1.5,
+                    opacity: 0.8
+                }).addTo(map).bindTooltip(
+                    `<strong>${item.city}</strong><br>${item.users} user${item.users !== 1 ? 's' : ''}`,
+                    { className: 'tooltip-custom', direction: 'top', offset: [0, -6] }
+                );
+            });
+
+            // Zoom to catchment bounds or auto-fit from data
+            if (catchmentBounds) {
+                map.fitBounds(catchmentBounds, { padding: [30, 30] });
+            } else if (matched > 1) {
                 const bounds = cityData
                     .filter(d => cityCoords[d.city])
                     .map(d => cityCoords[d.city]);
@@ -444,6 +561,40 @@
                     map.setView(cityCoords[single.city], 9);
                 }
             }
+
+            // City table: color function (sqrt scale, blue gradient)
+            function getColor(users) {
+                const ratio = Math.sqrt(users) / Math.sqrt(maxUsers);
+                const r = Math.round(219 + (30 - 219) * ratio);
+                const g = Math.round(234 + (58 - 234) * ratio);
+                const b = Math.round(254 + (95 - 254) * ratio);
+                return `rgb(${r}, ${g}, ${b})`;
+            }
+
+            // Populate city table
+            const VISIBLE_ROWS = 15;
+            const tbody = document.getElementById('city-table-body');
+            const sorted = [...cityData].sort((a, b) => b.users - a.users);
+            sorted.forEach((item, i) => {
+                const barWidth = Math.round((item.users / maxUsers) * 120);
+                const tr = document.createElement('tr');
+                if (i >= VISIBLE_ROWS) tr.className = 'hidden-row';
+                tr.innerHTML = `<td><span class="city-bar" style="width:${barWidth}px;background:${getColor(item.users)}"></span>${item.city}</td><td>${item.users}</td>`;
+                tbody.appendChild(tr);
+            });
+
+            if (sorted.length > VISIBLE_ROWS) {
+                const btn = document.createElement('button');
+                btn.className = 'show-all-btn';
+                btn.textContent = `Show all ${sorted.length} cities`;
+                btn.addEventListener('click', () => {
+                    const hidden = tbody.querySelectorAll('.hidden-row');
+                    const expanded = hidden[0] && hidden[0].classList.contains('show-all');
+                    hidden.forEach(row => row.classList.toggle('show-all'));
+                    btn.textContent = expanded ? `Show all ${sorted.length} cities` : `Show top ${VISIBLE_ROWS} only`;
+                });
+                document.querySelector('.city-list').appendChild(btn);
+            }
         } else {
             // No data overlay
             const overlay = document.createElement('div');
@@ -452,7 +603,7 @@
             document.body.appendChild(overlay);
         }
 
-        // Legend
+        // Legend with gradient bar
         const legend = L.control({ position: 'bottomright' });
         legend.onAdd = function() {
             const div = L.DomUtil.create('div', 'legend');
@@ -460,24 +611,12 @@
                 div.innerHTML = '<h4>No data</h4>';
                 return div;
             }
-            const maxUsers = Math.max(...cityData.map(d => d.users));
-            const low = Math.max(1, Math.round(maxUsers * 0.2));
-            const mid = Math.round(maxUsers * 0.5);
-            const high = maxUsers;
-
             div.innerHTML = `
-                <h4>Users per city</h4>
-                <div class="legend-row">
-                    <span class="legend-circle" style="width:12px;height:12px;background:${getColor(low, maxUsers)}"></span>
-                    <span>${low}</span>
-                </div>
-                <div class="legend-row">
-                    <span class="legend-circle" style="width:18px;height:18px;background:${getColor(mid, maxUsers)}"></span>
-                    <span>${mid}</span>
-                </div>
-                <div class="legend-row">
-                    <span class="legend-circle" style="width:24px;height:24px;background:${getColor(high, maxUsers)}"></span>
-                    <span>${high}</span>
+                <h4>User density</h4>
+                <div class="legend-gradient">
+                    <span>Fewer</span>
+                    <div class="legend-gradient-bar"></div>
+                    <span>More</span>
                 </div>
             `;
             return div;
