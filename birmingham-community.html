@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All UK Clients — User Heatmap</title>
+    <title>Birmingham Community Healthcare NHS Foundation Trust — User Heatmap</title>
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="All UK Clients — User Heatmap">
-    <meta property="og:description" content="2632 users across 111 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Mar 2026).">
+    <meta property="og:title" content="Birmingham Community Healthcare NHS Foundation Trust — User Heatmap">
+    <meta property="og:description" content="286 users across 21 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Mar 2026).">
     <meta property="og:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <!-- Twitter / Slack -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="All UK Clients — User Heatmap">
-    <meta name="twitter:description" content="2632 users across 111 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Mar 2026).">
+    <meta name="twitter:title" content="Birmingham Community Healthcare NHS Foundation Trust — User Heatmap">
+    <meta name="twitter:description" content="286 users across 21 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Mar 2026).">
     <meta name="twitter:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -264,23 +264,23 @@
         <div class="header-left">
             <div class="logo">SP</div>
             <div class="header-title">
-                <h1>All UK Clients</h1>
+                <h1>Birmingham Community Healthcare NHS Foundation Trust</h1>
                 <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 30 Mar 2026</div>
             </div>
         </div>
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">2632</div>
+                <div class="stat-value">286</div>
                 <div class="stat-label">Total Users</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">1247</div>
+                <div class="stat-value">222</div>
                 <div class="stat-label">On Map</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">111</div>
+                <div class="stat-value">21</div>
                 <div class="stat-label">Cities</div>
             </div>
         </div>
@@ -300,10 +300,10 @@
 
     <script>
         // City data injected by SuperTron
-        const cityData = [{"city": "Birmingham", "users": 249}, {"city": "Northampton", "users": 45}, {"city": "Southend-on-Sea", "users": 43}, {"city": "Cardiff", "users": 41}, {"city": "Swansea", "users": 36}, {"city": "London", "users": 32}, {"city": "City of London", "users": 28}, {"city": "Manchester", "users": 28}, {"city": "Rayleigh", "users": 24}, {"city": "Nottingham", "users": 21}, {"city": "Telford", "users": 21}, {"city": "Kettering", "users": 20}, {"city": "Leeds", "users": 20}, {"city": "Bristol", "users": 17}, {"city": "Coventry", "users": 17}, {"city": "Sheffield", "users": 17}, {"city": "Glasgow", "users": 16}, {"city": "South Benfleet", "users": 16}, {"city": "Bradford", "users": 15}, {"city": "Corby", "users": 15}, {"city": "Newport", "users": 15}, {"city": "Slough", "users": 14}, {"city": "Sutton Coldfield", "users": 14}, {"city": "Basildon", "users": 13}, {"city": "Ilford", "users": 13}, {"city": "Milton Keynes", "users": 13}, {"city": "Newcastle upon Tyne", "users": 12}, {"city": "Walsall", "users": 12}, {"city": "West Bromwich", "users": 12}, {"city": "Wolverhampton", "users": 12}, {"city": "Stoke-on-Trent", "users": 11}, {"city": "Reading", "users": 10}, {"city": "Solihull", "users": 10}, {"city": "Southampton", "users": 10}, {"city": "Bishop Auckland", "users": 9}, {"city": "Croydon", "users": 9}, {"city": "Huddersfield", "users": 9}, {"city": "Oswestry", "users": 9}, {"city": "Bedford", "users": 8}, {"city": "Greenwich", "users": 8}, {"city": "Lambeth", "users": 8}, {"city": "Liverpool", "users": 8}, {"city": "Luton", "users": 8}, {"city": "Port Talbot", "users": 8}, {"city": "Wickford", "users": 8}, {"city": "Caerphilly", "users": 7}, {"city": "Dudley", "users": 7}, {"city": "Edinburgh", "users": 7}, {"city": "Leicester", "users": 7}, {"city": "Leigh-on-Sea", "users": 7}, {"city": "Plymouth", "users": 7}, {"city": "Preston", "users": 7}, {"city": "Walthamstow", "users": 7}, {"city": "Blackburn", "users": 6}, {"city": "Crawley", "users": 6}, {"city": "Hengoed", "users": 6}, {"city": "Neath", "users": 6}, {"city": "Dagenham", "users": 5}, {"city": "Portsmouth", "users": 5}, {"city": "Romford", "users": 5}, {"city": "Salford", "users": 5}, {"city": "Southwark", "users": 5}, {"city": "Swindon", "users": 5}, {"city": "Tamworth", "users": 5}, {"city": "Wellingborough", "users": 5}, {"city": "Barnsley", "users": 4}, {"city": "Basingstoke", "users": 4}, {"city": "Belfast", "users": 4}, {"city": "Bolton", "users": 4}, {"city": "Burnley", "users": 4}, {"city": "Carlisle", "users": 4}, {"city": "Chatham", "users": 4}, {"city": "Chesterfield", "users": 4}, {"city": "Colchester", "users": 4}, {"city": "Dartford", "users": 4}, {"city": "Daventry", "users": 4}, {"city": "Doncaster", "users": 4}, {"city": "Durham", "users": 4}, {"city": "Fareham", "users": 4}, {"city": "Fulham", "users": 4}, {"city": "Rushden", "users": 4}, {"city": "Shrewsbury", "users": 4}, {"city": "Stafford", "users": 4}, {"city": "Oldham", "users": 3}, {"city": "Oxford", "users": 3}, {"city": "Peterborough", "users": 3}, {"city": "Brighton", "users": 3}, {"city": "Buckingham", "users": 3}, {"city": "Cambridge", "users": 3}, {"city": "Crewe", "users": 3}, {"city": "Gloucester", "users": 3}, {"city": "Gravesend", "users": 3}, {"city": "Maesteg", "users": 3}, {"city": "Sudbury", "users": 3}, {"city": "Towcester", "users": 3}, {"city": "Wakefield", "users": 3}, {"city": "Wigan", "users": 3}, {"city": "York", "users": 3}, {"city": "Aberdeen", "users": 2}, {"city": "Aylesbury", "users": 2}, {"city": "Bournemouth", "users": 2}, {"city": "Brackley", "users": 2}, {"city": "Bury", "users": 2}, {"city": "Derby", "users": 2}, {"city": "Exeter", "users": 2}, {"city": "Halifax", "users": 2}, {"city": "Middlesbrough", "users": 2}, {"city": "Norwich", "users": 2}, {"city": "Rochdale", "users": 2}, {"city": "Rugby", "users": 2}, {"city": "Redditch", "users": 2}];
+        const cityData = [{"city": "Birmingham", "users": 146}, {"city": "Sutton Coldfield", "users": 7}, {"city": "Wednesbury", "users": 7}, {"city": "Wolverhampton", "users": 7}, {"city": "Walsall", "users": 6}, {"city": "West Bromwich", "users": 5}, {"city": "Coventry", "users": 4}, {"city": "Glasgow", "users": 4}, {"city": "Nottingham", "users": 4}, {"city": "Solihull", "users": 4}, {"city": "Tipton", "users": 4}, {"city": "Bilston", "users": 3}, {"city": "City of London", "users": 3}, {"city": "Manchester", "users": 3}, {"city": "Newport", "users": 3}, {"city": "Blackburn", "users": 2}, {"city": "Brierley Hill", "users": 2}, {"city": "Dudley", "users": 2}, {"city": "Milton Keynes", "users": 2}, {"city": "Oldbury", "users": 2}, {"city": "Tamworth", "users": 2}];
 
         // Catchment bounds: [[swLat, swLng], [neLat, neLng]] or null for whole-UK view
-        const catchmentBounds = null;
+        const catchmentBounds = [[52.325, -2.085], [52.625, -1.665]];
 
         // UK city coordinates (~80 major cities)
         const cityCoords = {
