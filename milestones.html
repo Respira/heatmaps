@@ -4,263 +4,150 @@
 <meta charset="UTF-8">
 <title>Milestone Dashboard — Week of 2026-05-01</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; color: #1a1a1a; max-width: 1200px; margin: 30px auto; padding: 0 20px; }
-  h1 { color: #2b3440; margin-bottom: 4px; }
-  .subtitle { color: #666; font-size: 14px; margin-bottom: 24px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; color: #1a1a1a; max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+  h1 { color: #2b3440; }
   .summary { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
-  .card { background: #f7f8fa; border-radius: 8px; padding: 16px 20px; flex: 1; min-width: 140px; text-align: center; border: 1px solid #e8eaed; }
-  .card .label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px; }
-  .card .num { font-size: 36px; font-weight: 700; line-height: 1; }
-  .card.green { border-top: 3px solid #2e7d32; }
+  .card { background: #f7f8fa; border-radius: 8px; padding: 16px; flex: 1; min-width: 160px; text-align: center; }
+  .card .num { font-size: 32px; font-weight: 700; }
   .card.green .num { color: #2e7d32; }
-  .card.amber { border-top: 3px solid #ed6c02; }
   .card.amber .num { color: #ed6c02; }
-  .card.red { border-top: 3px solid #c62828; }
   .card.red .num { color: #c62828; }
-  .card.grey { border-top: 3px solid #9e9e9e; }
   .card.grey .num { color: #757575; }
-  .card.blue { border-top: 3px solid #1565c0; }
-  .card.blue .num { color: #1565c0; }
-  table { width: 100%; border-collapse: collapse; margin-top: 24px; font-size: 13px; }
-  th { background: #f0f2f5; font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid #d0d4db; white-space: nowrap; }
-  td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e8eaed; vertical-align: top; }
+  table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
+  th { background: #f0f2f5; font-weight: 600; }
   tr.on-track { background: #e8f5e9; }
   tr.drift { background: #fff3e0; }
   tr.blocked { background: #ffebee; }
-  tr.kpi-missing { background: #f5f5f5; }
-  .milestone-name a { color: #1565c0; text-decoration: none; font-weight: 600; }
-  .milestone-name a:hover { text-decoration: underline; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  tr.kpi-missing { background: #f5f5f5; color: #757575; }
+  .milestone-name a { color: #1976d2; text-decoration: none; font-weight: 600; }
+  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #666; font-size: 13px; }
+  .source-link { font-size: 11px; color: #888; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
   .badge.on-track { background: #c8e6c9; color: #1b5e20; }
-  .badge.drift { background: #ffe0b2; color: #e65100; }
+  .badge.drift { background: #ffe0b2; color: #bf360c; }
   .badge.blocked { background: #ffcdd2; color: #b71c1c; }
-  .badge.kpi-missing { background: #eeeeee; color: #616161; }
-  .progress-bar-wrap { background: #e0e0e0; border-radius: 4px; height: 8px; width: 100px; display: inline-block; vertical-align: middle; margin-right: 6px; }
-  .progress-bar-fill { height: 8px; border-radius: 4px; }
-  .fill-green { background: #4caf50; }
-  .fill-amber { background: #ff9800; }
-  .fill-red { background: #f44336; }
-  .fill-grey { background: #9e9e9e; }
-  .source-link { font-size: 11px; color: #1565c0; display: block; margin-top: 2px; }
-  .bottleneck { font-size: 12px; color: #b71c1c; }
-  .kpi-text { font-size: 12px; color: #424242; max-width: 200px; }
-  .kpi-missing-text { color: #9e9e9e; font-style: italic; font-size: 12px; }
-  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #888; margin-top: 32px; margin-bottom: 8px; }
-  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #666; font-size: 12px; line-height: 1.8; }
-  .footer a { color: #1565c0; }
-  .alert-box { background: #fff8e1; border-left: 4px solid #fbc02d; padding: 12px 16px; border-radius: 4px; margin: 16px 0; font-size: 13px; }
-  .alert-box strong { color: #f57f17; }
+  .badge.kpi-missing { background: #e0e0e0; color: #616161; }
+  .badge.manual { background: #e3f2fd; color: #0d47a1; }
+  .warning { color: #e65100; font-weight: 600; }
+  .notice { background: #fff8e1; border-left: 4px solid #f9a825; padding: 12px 16px; margin: 16px 0; border-radius: 4px; font-size: 14px; }
 </style>
 </head>
 <body>
 
-<h1>Milestone Dashboard</h1>
-<div class="subtitle">Week of 2026-05-01 (Week 18) — BeneTalk / SuperPenguin</div>
+<h1>Milestone Dashboard — Week of 2026-05-01</h1>
+<p style="color:#666; font-size:14px;">Week 2026-18 &middot; BeneTalk / SuperPenguin &middot; Generated by <code>milestone-tracker</code> agent</p>
+
+<div class="notice">
+  <strong>2 milestones missing a measurable KPI.</strong> Human-review tasks TSK-481 (M3) and TSK-482 (M4) remain open since 2026-04-23. These milestones cannot be automatically tracked until KPIs are defined.
+</div>
 
 <div class="summary">
-  <div class="card blue">
-    <div class="label">Active</div>
-    <div class="num">5</div>
-  </div>
-  <div class="card green">
-    <div class="label">On Track</div>
-    <div class="num">1</div>
-  </div>
-  <div class="card amber">
-    <div class="label">Drift</div>
-    <div class="num">1</div>
-  </div>
-  <div class="card red">
-    <div class="label">Blocked</div>
-    <div class="num">3</div>
-  </div>
-  <div class="card grey">
-    <div class="label">KPI Missing</div>
-    <div class="num">2</div>
-  </div>
+  <div class="card"><div>Active milestones</div><div class="num">5</div></div>
+  <div class="card green"><div>On track</div><div class="num">0</div></div>
+  <div class="card amber"><div>Drift / manual</div><div class="num">3</div></div>
+  <div class="card red"><div>Blocked</div><div class="num">0</div></div>
+  <div class="card grey"><div>KPI missing</div><div class="num">2</div></div>
 </div>
-
-<div class="alert-box">
-  <strong>Action required:</strong> M3 (Close £150k round) has no KPI defined and its target date is 2026-05-31 — 30 days away. M4 (£200k ARR) also has no KPI defined. Human-review tasks created on 2026-04-23 (TSK-481, TSK-482) are pending Jordi action.
-</div>
-
-<div class="section-title">Milestone Detail</div>
 
 <table>
 <thead>
 <tr>
   <th>Milestone</th>
   <th>Target Date</th>
-  <th>KPI</th>
-  <th>Current Value</th>
-  <th>Target Value</th>
+  <th>KPI (defined)</th>
+  <th>Current value</th>
+  <th>Target value</th>
   <th>Delta</th>
   <th>Task Progress</th>
   <th>Status</th>
-  <th>Bottleneck</th>
+  <th>Bottleneck / Notes</th>
 </tr>
 </thead>
 <tbody>
 
-<!-- M1 -->
-<tr class="blocked">
-  <td class="milestone-name">
-    <a href="https://app.notion.com/p/M1-validate-UK-business-CRL-5-to-6-33958d4eca658198b40efc9a76ec99f5">M1 validate UK business (CRL 5 to 6)</a>
-    <div style="font-size:11px;color:#666;margin-top:2px;">Owner: Jordi Fernandez</div>
-  </td>
-  <td>2026-06-01<br><span style="font-size:11px;color:#c62828;">31 days</span></td>
-  <td class="kpi-text">
-    - Would I invest myself in the company knowing what I know right now?<br>
-    - Secure a strong board or key partner in key/next sales market
-    <span class="source-link"><a href="https://app.notion.com/p/M1-validate-UK-business-CRL-5-to-6-33958d4eca658198b40efc9a76ec99f5">Notion</a></span>
-  </td>
-  <td>Qualitative — manual update needed</td>
-  <td>Qualitative</td>
-  <td>—</td>
-  <td>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill fill-red" style="width:21%"></div></div>
-    21% (3/14 tasks)
-    <div style="font-size:11px;color:#666;">10 projects linked</div>
-  </td>
-  <td><span class="badge blocked">Blocked</span></td>
-  <td class="bottleneck">11 of 14 tasks stuck in human-review (9-11 days). PRJ-25: reactivate-frog tasks and NHS inbound conversions stalled. KPI is qualitative — no automated measurement possible.</td>
-</tr>
-
-<!-- M2 -->
 <tr class="drift">
-  <td class="milestone-name">
-    <a href="https://app.notion.com/p/M2-400k-minimum-grant-funding-year-33958d4eca658101922fd5fa1067f47b">M2 &gt; £400k minimum grant funding /year</a>
-    <div style="font-size:11px;color:#666;margin-top:2px;">Owner: Jordi Fernandez</div>
-  </td>
-  <td>2026-09-01<br><span style="font-size:11px;color:#ed6c02;">123 days</span></td>
-  <td class="kpi-text">
-    Can we achieve this without affecting the performance of M1?
-    <span class="source-link"><a href="https://app.notion.com/p/M2-400k-minimum-grant-funding-year-33958d4eca658101922fd5fa1067f47b">Notion</a></span>
-  </td>
-  <td>KPI defined, current value unknown (manual update needed)</td>
-  <td>£400k/year grants</td>
-  <td>—</td>
-  <td>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill fill-amber" style="width:66%"></div></div>
-    66% (19/29 tasks complete)
-    <div style="font-size:11px;color:#666;">7 projects linked (incl. NIHR, IUK, EIT, DfE)</div>
-  </td>
+  <td class="milestone-name"><a href="https://app.notion.com/p/M1-validate-UK-business-CRL-5-to-6-33958d4eca658198b40efc9a76ec99f5">M1 validate UK business (CRL 5 to 6)</a></td>
+  <td>2026-06-01</td>
+  <td>Secure strong board/key partner; founder conviction to invest <span class="source-link">(<a href="https://www.notion.so/9ac9e1ca4dd2455695d1f82d954d8d8a" target="_blank">Notion</a>)</span></td>
+  <td>Manual update needed</td>
+  <td>Qualitative</td>
+  <td>&mdash;</td>
+  <td>12 projects active (0% rollup from DB)</td>
+  <td><span class="badge manual">Manual KPI</span></td>
+  <td>KPI is qualitative with no numeric target parseable. 31 days to deadline. 12 linked projects (PRJ-25 umbrella + 11 outreach/applications). Progress % not reported by any project. Recommend Jordi sets a numeric proxy (e.g. signed pilots &ge;3, or board seat secured).</td>
+</tr>
+
+<tr class="drift">
+  <td class="milestone-name"><a href="https://app.notion.com/p/M2-400k-minimum-grant-funding-year-33958d4eca658101922fd5fa1067f47b">M2 &gt; &pound;400k minimum grant funding /year</a></td>
+  <td>2026-09-01</td>
+  <td>Can we achieve this without affecting M1? (qualitative gate check) <span class="source-link">(<a href="https://www.notion.so/9ac9e1ca4dd2455695d1f82d954d8d8a" target="_blank">Notion</a>)</span></td>
+  <td>Manual update needed</td>
+  <td>&pound;400k/year</td>
+  <td>&mdash;</td>
+  <td>8 projects active (has_more tasks in PRJ-26)</td>
+  <td><span class="badge manual">Manual KPI</span></td>
+  <td>KPI field contains a qualitative gate question, not a current value. Cannot auto-fetch from cashflow sheet without Jordi approval (UNVERIFIED). Key upcoming deadlines: EIT Health submission 2026-05-06, Glasgow City Council SLT 2026-05-04 (3 days), DfE Best Start in Life 2026-05-29. PRJ-26 umbrella has 25+ tasks linked.</td>
+</tr>
+
+<tr class="kpi-missing">
+  <td class="milestone-name"><a href="https://app.notion.com/p/M3-Close-150k-round-33958d4eca6581778bafc2127cde31fb">M3 &gt; Close &pound;150k round</a></td>
+  <td>2026-05-31</td>
+  <td><span class="warning">&#9888; KPI MISSING</span></td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>1 project (PRJ-87: UK B2B Private Market, 0% progress)</td>
+  <td><span class="badge kpi-missing">KPI Missing</span></td>
+  <td>Human-review task TSK-481 open since 2026-04-23 (8 days). Target date is 30 days away. No KPI defined. 1 linked project (sales/strategic exploration, no tasks). Urgent: KPI needed to assess whether round is on track.</td>
+</tr>
+
+<tr class="kpi-missing">
+  <td class="milestone-name"><a href="https://app.notion.com/p/M4-200k-ARR-33958d4eca6581628559db936b2e3517">M4 &gt; &pound;200k ARR</a></td>
+  <td>2026-12-31</td>
+  <td><span class="warning">&#9888; KPI MISSING</span></td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>&mdash;</td>
+  <td>0 linked projects</td>
+  <td><span class="badge kpi-missing">KPI Missing</span></td>
+  <td>Human-review task TSK-482 open since 2026-04-23 (8 days). No linked projects and no KPI defined. ARR figure should be fetchable from Xero/cashflow sheet (requires Jordi approval per RULE). Suggest: set KPI as "ARR &ge; &pound;200k by 2026-12-31" and link to active sales/delivery projects.</td>
+</tr>
+
+<tr class="drift">
+  <td class="milestone-name"><a href="https://app.notion.com/p/M5-1M-round-33958d4eca6581da9654c60c5413f1a5">M5 &gt; &pound;1M round</a></td>
+  <td>2027-03-01</td>
+  <td>All M1-M4 achieved; 100 investor conversations from 500 outreach <span class="source-link">(<a href="https://www.notion.so/9ac9e1ca4dd2455695d1f82d954d8d8a" target="_blank">Notion</a>)</span></td>
+  <td>Unknown (manual update needed)</td>
+  <td>100 investor conversations</td>
+  <td>&mdash;</td>
+  <td>0 linked projects</td>
   <td><span class="badge drift">Drift</span></td>
-  <td class="bottleneck">10 tasks in human-review in PRJ-26 (1-13 days). KPI is process-qualitative — no numeric target parseable for automated check. IUK loan extension decision pending 13d.</td>
-</tr>
-
-<!-- M3 -->
-<tr class="blocked">
-  <td class="milestone-name">
-    <a href="https://app.notion.com/p/M3-Close-150k-round-33958d4eca6581778bafc2127cde31fb">M3 &gt; Close £150k round</a>
-    <div style="font-size:11px;color:#666;margin-top:2px;">Owner: Jordi Fernandez</div>
-  </td>
-  <td>2026-05-31<br><span style="font-size:11px;color:#c62828;">30 days</span></td>
-  <td class="kpi-missing-text">
-    &#9888; KPI MISSING
-    <span class="source-link"><a href="https://app.notion.com/p/Define-KPI-for-milestone-M3-Close-150k-round-34b58d4eca65818e88bafd8e60a8e7fb">TSK-481: Define KPI (human-review)</a></span>
-  </td>
-  <td>—</td>
-  <td>£150k round closed</td>
-  <td>—</td>
-  <td>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill fill-grey" style="width:0%"></div></div>
-    0% (0 projects linked)
-  </td>
-  <td><span class="badge kpi-missing">KPI Missing</span></td>
-  <td class="bottleneck">No projects linked. No KPI defined. Target date in 30 days. TSK-481 awaiting Jordi definition since 2026-04-23 (8 days). Fundraising milestone with no execution workstream visible in Notion.</td>
-</tr>
-
-<!-- M4 -->
-<tr class="blocked">
-  <td class="milestone-name">
-    <a href="https://app.notion.com/p/M4-200k-ARR-33958d4eca6581628559db936b2e3517">M4 &gt; £200k ARR</a>
-    <div style="font-size:11px;color:#666;margin-top:2px;">Owner: Jordi Fernandez</div>
-  </td>
-  <td>2026-12-31<br><span style="font-size:11px;color:#666;">244 days</span></td>
-  <td class="kpi-missing-text">
-    &#9888; KPI MISSING
-    <span class="source-link"><a href="https://app.notion.com/p/Define-KPI-for-milestone-M4-200k-ARR-34b58d4eca6581759286c0c0b76a387d">TSK-482: Define KPI (human-review)</a></span>
-  </td>
-  <td>—</td>
-  <td>£200k ARR</td>
-  <td>—</td>
-  <td>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill fill-grey" style="width:0%"></div></div>
-    0% (PRJ-87: 0 tasks found, 1 megatron)
-    <div style="font-size:11px;color:#666;">UK B2B Private Market exploration</div>
-  </td>
-  <td><span class="badge kpi-missing">KPI Missing</span></td>
-  <td class="bottleneck">No KPI defined. PRJ-87 (UK B2B Strategic Exploration) has 0 completed tasks. TSK-482 awaiting Jordi definition since 2026-04-23 (8 days). ARR tracking requires Cashflow Sheet integration once KPI is defined.</td>
-</tr>
-
-<!-- M5 -->
-<tr class="on-track">
-  <td class="milestone-name">
-    <a href="https://app.notion.com/p/M5-1M-round-33958d4eca6581da9654c60c5413f1a5">M5 &gt; £1M round</a>
-    <div style="font-size:11px;color:#666;margin-top:2px;">Owner: Jordi Fernandez</div>
-  </td>
-  <td>2027-03-01<br><span style="font-size:11px;color:#2e7d32;">304 days</span></td>
-  <td class="kpi-text">
-    - All above milestones achieved<br>
-    - 100 investor conversations (500 outreach)
-    <span class="source-link"><a href="https://app.notion.com/p/M5-1M-round-33958d4eca6581da9654c60c5413f1a5">Notion</a> | Investors CRM needed for count</span>
-  </td>
-  <td>Manual — investor count not yet automated</td>
-  <td>100 conversations / 500 outreach</td>
-  <td>—</td>
-  <td>
-    <div class="progress-bar-wrap"><div class="progress-bar-fill fill-grey" style="width:0%"></div></div>
-    N/A (0 projects linked directly)
-    <div style="font-size:11px;color:#666;">Depends on M1-M4 completion</div>
-  </td>
-  <td><span class="badge on-track">On Track</span></td>
-  <td>Timeline is 304 days — sufficient runway. KPI (investor conversations) not yet trackable automatically. No projects linked directly; progress is derivative of M1-M4. Flag for Customers/Investors DB access.</td>
+  <td>No linked projects in DB. Investor conversation count cannot be auto-fetched (no Amplitude/Tasks DB mapping). KPI has a numeric target (100 conversations) but no current value source. Bottleneck: M5 is blocked upstream by M1-M4 not yet achieved; also has 0 projects linked. Fundraising agent should be creating investor-outreach tracking tasks.</td>
 </tr>
 
 </tbody>
 </table>
 
-<div class="section-title">Key Actions Required This Week</div>
-<table style="margin-top:8px;">
+<h2 style="margin-top: 32px; color: #2b3440; font-size: 16px;">KPI-Missing Tasks (Step 1.5)</h2>
+<table>
 <thead>
-<tr>
-  <th>Priority</th>
-  <th>Action</th>
-  <th>Owner</th>
-  <th>Deadline</th>
-</tr>
+<tr><th>Task</th><th>Task ID</th><th>Status</th><th>Created</th><th>Reviewer</th></tr>
 </thead>
 <tbody>
-<tr style="background:#fff3e0;">
-  <td><strong style="color:#c62828;">P0</strong></td>
-  <td>Define KPI for M3 (Close £150k round) — TSK-481 in human-review. Target date is 30 days away with no execution workstream.</td>
-  <td>Jordi</td>
-  <td>Immediate</td>
-</tr>
-<tr style="background:#fff3e0;">
-  <td><strong style="color:#c62828;">P0</strong></td>
-  <td>Define KPI for M4 (£200k ARR) — TSK-482 in human-review. Also link an execution project to PRJ-87.</td>
-  <td>Jordi</td>
-  <td>This week</td>
-</tr>
-<tr style="background:#ffebee;">
-  <td><strong style="color:#ed6c02;">P1</strong></td>
-  <td>Unblock 11 human-review tasks on M1/PRJ-25. 5 are "reactivate frog" tasks, 6 are NHS inbound conversions. All 9-11 days old.</td>
-  <td>Jordi / Ronan</td>
-  <td>This week</td>
-</tr>
-<tr style="background:#fff8e1;">
-  <td><strong style="color:#ed6c02;">P1</strong></td>
-  <td>IUK loan extension decision (PRJ-26, 13 days in human-review). Resolve ownership: Luna or keep with Finn.</td>
-  <td>Jordi</td>
-  <td>This week</td>
+<tr>
+  <td><a href="https://app.notion.com/p/Define-KPI-for-milestone-M3-Close-150k-round-34b58d4eca65818e88bafd8e60a8e7fb">Define KPI for milestone: M3 &gt; Close &pound;150k round</a></td>
+  <td>TSK-481</td>
+  <td>human-review</td>
+  <td>2026-04-23</td>
+  <td>Jordi Fernandez</td>
 </tr>
 <tr>
-  <td><strong>P2</strong></td>
-  <td>Link M5 to Investors CRM / Customers &amp; Pilots DB to enable automated investor outreach tracking (500 target).</td>
-  <td>Ada / Jordi</td>
-  <td>Next sprint</td>
+  <td><a href="https://app.notion.com/p/Define-KPI-for-milestone-M4-200k-ARR-34b58d4eca6581759286c0c0b76a387d">Define KPI for milestone: M4 &gt; &pound;200k ARR</a></td>
+  <td>TSK-482</td>
+  <td>human-review</td>
+  <td>2026-04-23</td>
+  <td>Jordi Fernandez</td>
 </tr>
 </tbody>
 </table>
@@ -269,8 +156,8 @@
   <p><strong>Live dashboard:</strong> <a href="https://respira.github.io/heatmaps/milestones.html">respira.github.io/heatmaps/milestones.html</a> (always-latest)</p>
   <p><strong>This week's archive:</strong> <a href="https://respira.github.io/heatmaps/milestones-history/week-2026-18.html">week-2026-18.html</a></p>
   <p><strong>Notion source of truth:</strong> <a href="https://www.notion.so/9ac9e1ca4dd2455695d1f82d954d8d8a">Milestones DB</a></p>
-  <p>Generated by <code>milestone-tracker</code> agent on 2026-05-01T00:35Z — scheduled weekly Friday run (Week 18)</p>
-  <p style="color:#aaa;font-size:11px;">Data sources: Notion Milestones DB, Projects DB, Tasks DB. KPI values for qualitative milestones require manual update. Cashflow/Amplitude/Investors DB integration pending KPI definition on M3/M4.</p>
+  <p>Generated by <code>milestone-tracker</code> agent on 2026-05-01T06:57:04Z &mdash; week 2026-18</p>
+  <p style="font-size:12px; color:#999;">KPI values for M1, M2, M5 require manual update (qualitative KPIs). M3 and M4 KPIs remain undefined (TSK-481, TSK-482 in human-review). Revenue/ARR figures from cashflow sheet are marked [UNVERIFIED &mdash; REQUIRES JORDI APPROVAL] per RULE-019 and have not been fetched this run.</p>
 </div>
 
 </body>
