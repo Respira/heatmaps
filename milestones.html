@@ -2,174 +2,129 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Milestone Dashboard — Week of 2026-05-19</title>
+<title>Milestone Dashboard &mdash; Week of 2026-05-22</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; color: #1a1a1a; max-width: 1100px; margin: 30px auto; padding: 0 20px; }
-  h1 { color: #2b3440; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; color: #1a1a1a; max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+  h1 { color: #2b3440; margin-bottom: 4px; }
   .summary { display: flex; gap: 16px; margin: 24px 0; flex-wrap: wrap; }
-  .card { background: #f7f8fa; border-radius: 8px; padding: 16px; flex: 1; min-width: 160px; text-align: center; }
+  .card { background: #f7f8fa; border-radius: 8px; padding: 16px 12px; flex: 1; min-width: 130px; text-align: center; }
   .card .num { font-size: 32px; font-weight: 700; }
   .card.green .num { color: #2e7d32; }
   .card.amber .num { color: #ed6c02; }
   .card.red .num { color: #c62828; }
   .card.grey .num { color: #757575; }
   table { width: 100%; border-collapse: collapse; margin-top: 24px; }
-  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e0e0e0; font-size: 14px; }
-  th { background: #f0f2f5; font-weight: 600; }
-  tr.ahead td { background: #c8e6c9; }
-  tr.on-track td { background: #e8f5e9; }
-  tr.drift td { background: #fff3e0; }
-  tr.at-risk td { background: #ffebee; }
-  tr.kpi-missing td { background: #f5f5f5; color: #757575; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e0e0e0; font-size: 13px; vertical-align: top; }
+  th { background: #f0f2f5; font-weight: 600; font-size: 12px; }
+  tr.ahead { background: #c8e6c9; }
+  tr.on-track { background: #e8f5e9; }
+  tr.drift { background: #fff3e0; }
+  tr.at-risk { background: #ffebee; }
+  tr.kpi-missing { background: #f5f5f5; color: #757575; }
   .milestone-name a { color: #1976d2; text-decoration: none; font-weight: 600; }
-  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-  .badge.ahead { background: #2e7d32; color: #fff; }
-  .badge.on-track { background: #388e3c; color: #fff; }
-  .badge.drift { background: #ed6c02; color: #fff; }
-  .badge.at-risk { background: #c62828; color: #fff; }
-  .source-link { font-size: 11px; color: #888; display: block; margin-top: 2px; }
-  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #666; font-size: 13px; }
-  .kpi-cell { max-width: 280px; word-wrap: break-word; }
-  .delta-pos { color: #2e7d32; font-weight: 600; }
-  .delta-neg { color: #c62828; font-weight: 600; }
+  .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #e0e0e0; color: #666; font-size: 12px; }
+  .source-link { font-size: 11px; color: #888; }
+  .source-link a { color: #888; }
+  .breach-box { margin-top:16px; padding:12px 16px; background:#fff3e0; border-left:4px solid #ed6c02; border-radius:4px; }
 </style>
 </head>
 <body>
-
-<h1>Milestone Dashboard — Week of 2026-05-19</h1>
-<p style="color:#666; font-size:13px;">Manual test run authorised by Jordi. Agent normally fires on Fridays. Today is Tuesday 2026-05-19, week 21.</p>
-
+<h1>Milestone Dashboard &mdash; Week of 2026-05-22</h1>
+<p style="color:#666;font-size:13px;margin-top:4px">BeneTalk / SuperPenguin &bull; Week 2026-21 &bull; Year elapsed: <strong>38.7%</strong></p>
 <div class="summary">
-  <div class="card"><div>Active</div><div class="num">6</div></div>
-  <div class="card green"><div>Ahead</div><div class="num">2</div></div>
-  <div class="card green"><div>On track</div><div class="num">1</div></div>
-  <div class="card amber"><div>Drift</div><div class="num">1</div></div>
-  <div class="card red"><div>At risk</div><div class="num">2</div></div>
-  <div class="card grey"><div>KPI missing</div><div class="num">0</div></div>
+  <div class="card"><div style="font-size:12px;color:#666">Active</div><div class="num">6</div></div>
+  <div class="card green"><div style="font-size:12px;color:#666">Ahead</div><div class="num">2</div></div>
+  <div class="card green"><div style="font-size:12px;color:#666">On track</div><div class="num">0</div></div>
+  <div class="card amber"><div style="font-size:12px;color:#666">Drift</div><div class="num">2</div></div>
+  <div class="card red"><div style="font-size:12px;color:#666">At risk</div><div class="num">2</div></div>
+  <div class="card grey"><div style="font-size:12px;color:#666">KPI missing</div><div class="num">0</div></div>
 </div>
-
-<p><strong>Year elapsed:</strong> 37.9% (today 2026-05-19, day 138 of 364 in 2026)</p>
-
 <table>
 <thead><tr>
-  <th>Milestone</th>
-  <th>Current KPI</th>
-  <th>KPI 2026 target</th>
-  <th>KPI 2027</th>
-  <th>KPI progress</th>
-  <th>Delta vs pace</th>
-  <th>Task %</th>
-  <th>Status</th>
-  <th>Bottleneck</th>
+  <th>Milestone</th><th>Current KPI</th><th>KPI 2026 Target</th><th>KPI 2027 Stretch</th><th>KPI Progress</th><th>Delta vs pace</th><th>Task %</th><th>Status</th><th>Bottleneck</th>
 </tr></thead>
 <tbody>
-
-<tr class="ahead">
-  <td class="milestone-name"><a href="https://www.notion.so/M5-Sales-to-match-fund-grants-36558d4eca65818d99dcf12185f3104f">M5 Sales to match-fund grants</a><br><span style="font-size:11px;color:#555;">Owner: Ronan Miller</span></td>
-  <td class="kpi-cell">
-    £35k committed (£25k Ernie + £10k Alain)
-    <a class="source-link" href="https://www.notion.so/M5-Sales-to-match-fund-grants-36558d4eca65818d99dcf12185f3104f">Source: Notion milestone row (owner-maintained)</a>
-  </td>
-  <td>£40k ARR</td>
-  <td>£120k ARR</td>
-  <td>87.5%</td>
-  <td class="delta-pos">+49.6pp</td>
-  <td>N/A</td>
-  <td><span class="badge ahead">ahead</span></td>
-  <td></td>
-</tr>
-
-<tr class="ahead">
-  <td class="milestone-name"><a href="https://www.notion.so/M4-Win-grants-IUK-European-36558d4eca6581e8852cc6b6a9f5796c">M4 Win grants (IUK + European)</a><br><span style="font-size:11px;color:#555;">Owner: Orla Purdon</span></td>
-  <td class="kpi-cell">
-    £315k (IUK Biomedical Catalyst 2025 won)
-    <a class="source-link" href="https://www.notion.so/M4-Win-grants-IUK-European-36558d4eca6581e8852cc6b6a9f5796c">Source: Notion milestone row (owner-maintained)</a>
-  </td>
-  <td>£400k</td>
-  <td>£2.1M (EIC Accelerator + EIC Pathfinder DeepRAP + Frontier AI Discovery IUK)</td>
-  <td>78.8%</td>
-  <td class="delta-pos">+40.9pp</td>
-  <td>0%</td>
-  <td><span class="badge ahead">ahead</span></td>
-  <td></td>
-</tr>
-
-<tr class="drift">
-  <td class="milestone-name"><a href="https://www.notion.so/M3-B2C-app-to-collect-data-vehicle-TBD-BeneTalk-vs-SuperPenguin-36558d4eca65819abad8c058334a7036">M3 B2C app to collect data (vehicle TBD)</a><br><span style="font-size:11px;color:#555;">Owner: Nuria Lopez Colom</span></td>
-  <td class="kpi-cell">
-    200 MAU
-    <a class="source-link" href="https://www.notion.so/M3-B2C-app-to-collect-data-vehicle-TBD-BeneTalk-vs-SuperPenguin-36558d4eca65819abad8c058334a7036">Source: Notion milestone row (owner-maintained)</a>
-  </td>
-  <td>1,000 MAU</td>
-  <td>10k users</td>
-  <td>20.0%</td>
-  <td class="delta-neg">-17.9pp</td>
-  <td>N/A</td>
-  <td><span class="badge drift">drift</span></td>
-  <td>Behind pace by 17.9pp. No linked projects yet (vehicle decision pending: BeneTalk vs SuperPenguin direct B2C).</td>
-</tr>
-
-<tr class="on-track">
-  <td class="milestone-name"><a href="https://www.notion.so/M2-B2B-Scribe-Adoption-to-collect-data-36558d4eca6581828c98f0a00f0a4f26">M2 B2B Scribe Adoption to collect data</a><br><span style="font-size:11px;color:#555;">Owner: Ronan Miller</span></td>
-  <td class="kpi-cell">
-    2 clients
-    <a class="source-link" href="https://www.notion.so/M2-B2B-Scribe-Adoption-to-collect-data-36558d4eca6581828c98f0a00f0a4f26">Source: Notion milestone row (owner-maintained)</a>
-  </td>
-  <td>7 clients</td>
-  <td>20 clients</td>
-  <td>28.6%</td>
-  <td class="delta-neg">-9.3pp</td>
-  <td>N/A</td>
-  <td><span class="badge on-track">on-track</span></td>
-  <td></td>
-</tr>
-
 <tr class="at-risk">
-  <td class="milestone-name"><a href="https://www.notion.so/M1-Build-B2G-case-studies-for-ROI-evidence-36558d4eca65815aafa1f3be9caf6103">M1 Build B2G case studies for ROI evidence</a><br><span style="font-size:11px;color:#555;">Owner: Ronan Miller</span></td>
-  <td class="kpi-cell">
-    0/3 case studies
-    <a class="source-link" href="https://www.notion.so/M1-Build-B2G-case-studies-for-ROI-evidence-36558d4eca65815aafa1f3be9caf6103">Source: Notion milestone row (owner-maintained)</a>
-  </td>
+  <td class="milestone-name"><a href="https://www.notion.so/M1-Build-B2G-case-studies-for-ROI-evidence-36558d4eca65815aafa1f3be9caf6103">M1 Build B2G case studies for ROI evidence</a></td>
+  <td>0/3 case studies<br><span class="source-link"><a href="https://www.notion.so/M1-Build-B2G-case-studies-for-ROI-evidence-36558d4eca65815aafa1f3be9caf6103">[Notion]</a></span></td>
   <td>1 Outcomes Study + 1 NHS ROI study + 1 LA study</td>
   <td>Continued case-study scale-out</td>
   <td>0.0%</td>
-  <td class="delta-neg">-37.9pp</td>
-  <td>0% (0/4 tasks)</td>
-  <td><span class="badge at-risk">at-risk</span></td>
-  <td>KPI 0.0% achieved by month 5 of 12 (delta -37.9pp). 4 linked tasks across 4 projects, 0 completed.</td>
+  <td>-38.7pp</td>
+  <td>25% (1/4 projects)</td>
+  <td><span style="background:#b71c1c;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">At risk</span></td>
+  <td><span style="color:#c62828">KPI 0% achieved by month 5 of 12 (delta -38.7pp); no case study started</span></td>
 </tr>
-
+<tr class="drift">
+  <td class="milestone-name"><a href="https://www.notion.so/M2-B2B-Scribe-Adoption-to-collect-data-36558d4eca6581828c98f0a00f0a4f26">M2 B2B Scribe Adoption to collect data</a></td>
+  <td>2 clients<br><span class="source-link"><a href="https://www.notion.so/M2-B2B-Scribe-Adoption-to-collect-data-36558d4eca6581828c98f0a00f0a4f26">[Notion]</a></span></td>
+  <td>7 clients</td>
+  <td>20 clients</td>
+  <td>28.6%</td>
+  <td>-10.2pp</td>
+  <td>0% (no linked projects)</td>
+  <td><span style="background:#e65100;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">Drift</span></td>
+  <td><span style="color:#c62828">No linked Projects in DB; 5 more clients needed by Dec 2026</span></td>
+</tr>
+<tr class="drift">
+  <td class="milestone-name"><a href="https://www.notion.so/M3-B2C-app-to-collect-data-vehicle-TBD-BeneTalk-vs-SuperPenguin-36558d4eca65819abad8c058334a7036">M3 B2C app to collect data (vehicle TBD)</a></td>
+  <td>200 MAU<br><span class="source-link"><a href="https://www.notion.so/M3-B2C-app-to-collect-data-vehicle-TBD-BeneTalk-vs-SuperPenguin-36558d4eca65819abad8c058334a7036">[Notion]</a></span></td>
+  <td>1,000 MAU</td>
+  <td>10k users</td>
+  <td>20.0%</td>
+  <td>-18.7pp</td>
+  <td>0% (no linked projects)</td>
+  <td><span style="background:#e65100;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">Drift</span></td>
+  <td><span style="color:#c62828">Vehicle decision (BeneTalk vs SuperPenguin) pending; no linked projects</span></td>
+</tr>
+<tr class="ahead">
+  <td class="milestone-name"><a href="https://www.notion.so/M4-Win-grants-IUK-European-36558d4eca6581e8852cc6b6a9f5796c">M4 Win grants (IUK + European)</a></td>
+  <td>&#163;315k (IUK Biomedical Catalyst 2025 won)<br><span class="source-link"><a href="https://www.notion.so/M4-Win-grants-IUK-European-36558d4eca6581e8852cc6b6a9f5796c">[Notion]</a></span></td>
+  <td>&#163;400k</td>
+  <td>&#163;2.1M (EIC Accelerator + EIC Pathfinder DeepRAP + Frontier AI Discovery IUK)</td>
+  <td>78.8%</td>
+  <td>+40.0pp</td>
+  <td>33% (2/6 projects)</td>
+  <td><span style="background:#2e7d32;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">Ahead</span></td>
+  <td><span style="color:#888">&#8212;</span></td>
+</tr>
+<tr class="ahead">
+  <td class="milestone-name"><a href="https://www.notion.so/M5-Sales-to-match-fund-grants-36558d4eca65818d99dcf12185f3104f">M5 Sales to match-fund grants</a></td>
+  <td>&#163;35k committed<br><span class="source-link"><a href="https://www.notion.so/M5-Sales-to-match-fund-grants-36558d4eca65818d99dcf12185f3104f">[Notion]</a></span></td>
+  <td>&#163;40k ARR</td>
+  <td>&#163;120k ARR</td>
+  <td>87.5%</td>
+  <td>+48.8pp</td>
+  <td>0% (0/3 active projects)</td>
+  <td><span style="background:#2e7d32;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">Ahead</span></td>
+  <td><span style="color:#888">&#8212;</span></td>
+</tr>
 <tr class="at-risk">
-  <td class="milestone-name"><a href="https://www.notion.so/M7-Grow-Super-Agents-34758d4eca658031a3d2dca8e8b753bf">M7 Grow Super Agents</a><br><span style="font-size:11px;color:#555;">Owner: Jordi Fernandez</span></td>
-  <td class="kpi-cell" style="font-size:12px;">
-    <strong>Snapshot 2026-05-19:</strong> Jordi 38 BREACH, Ronan 31 BREACH, Orla 4, Laima 4, Anna 3. Max 38 vs target &lt;20. Total 80 across 5 reviewers.
-    <a class="source-link" href="https://www.notion.so/M7-Grow-Super-Agents-34758d4eca658031a3d2dca8e8b753bf">Source: Tasks DB auto-refresh by milestone-tracker (2026-05-19)</a>
-  </td>
-  <td>&lt;20 high-value tasks (CBS &gt; 7) per user per month</td>
-  <td>&lt;20 per user, sustained monthly (continued)</td>
+  <td class="milestone-name"><a href="https://www.notion.so/M7-Grow-Super-Agents-34758d4eca658031a3d2dca8e8b753bf">M7 Grow Super Agents</a></td>
+  <td>Snapshot 2026-05-22: Jordi Fernandez 39 BREACH, Ronan Miller 31 BREACH, Orla Purdon 4, Laima Cekule 4, Anna Oromi 3. Max 39 vs target &lt;20. Total 81 across 5 reviewers.<br><span class="source-link"><a href="https://www.notion.so/M7-Grow-Super-Agents-34758d4eca658031a3d2dca8e8b753bf">[Tasks DB (auto-refreshed)]</a></span></td>
+  <td>&lt;20 high-value tasks (CBS &gt; 7) per user awaiting human review</td>
+  <td>&lt;20 high-value tasks per user (continued)</td>
+  <td>N/A (threshold)</td>
   <td>N/A</td>
-  <td>N/A</td>
-  <td>0% (0/272)</td>
-  <td><span class="badge at-risk">at-risk</span></td>
-  <td>M7: Jordi 38, Ronan 31 in breach (target &lt;20/user). Max 38 exceeds threshold by 18.</td>
+  <td>0% (0/14 projects)</td>
+  <td><span style="background:#b71c1c;color:#fff;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">At risk</span></td>
+  <td><span style="color:#c62828">M7: Jordi 39 / Ronan 31 in breach (target &lt;20 each)</span></td>
 </tr>
-
 </tbody>
 </table>
 
-<div style="margin-top:24px; padding:12px 16px; background:#fff3e0; border-left:4px solid #ed6c02; border-radius:4px;">
-  <strong>Super-agent autonomy (M7) — reviewers in breach this week:</strong><br>
-  <strong>Jordi</strong>: 38 (target &lt;20)<br>
-  <strong>Ronan</strong>: 31 (target &lt;20)<br>
+<div class="breach-box">
+  <strong>Super-agent autonomy (M7) &mdash; reviewers in breach this week:</strong><br>
+  <strong>Jordi Fernandez</strong>: 39 tasks (target &lt;20)<br>
+  <strong>Ronan Miller</strong>: 31 tasks (target &lt;20)<br>
   <em>Reduce by either (a) lifting autonomy gates on agents managed by these reviewers, or (b) batch-clearing their human-review queue.</em>
 </div>
 
 <div class="footer">
   <p><strong>Live dashboard:</strong> <a href="https://respira.github.io/heatmaps/milestones.html">respira.github.io/heatmaps/milestones.html</a> (always-latest)</p>
-  <p><strong>This week's archive:</strong> <a href="https://respira.github.io/heatmaps/milestones-history/week-2026-21.html">week-2026-21.html</a></p>
+  <p><strong>This week's archive:</strong> <a href="https://respira.github.io/heatmaps/milestones-history/week-2026-21.html">milestones-history/week-2026-21.html</a></p>
   <p><strong>Notion source of truth:</strong> <a href="https://www.notion.so/9ac9e1ca4dd2455695d1f82d954d8d8a">Milestones DB</a></p>
-  <p>Generated by <code>milestone-tracker</code> agent on 2026-05-19T10:57:00Z. PAL-validated (gemini-2.5-pro, delta correction applied). Manual test run.</p>
+  <p>Generated by <code>milestone-tracker</code> v2.2 on 2026-05-21T23:39:18Z</p>
 </div>
-
 </body>
 </html>
