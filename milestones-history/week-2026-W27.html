@@ -104,7 +104,7 @@
   <td>&lt;20 high-value tasks per user, sustained monthly (continued)</td>
   <td>—</td>
   <td>—</td>
-  <td>40.4% (partial sample, likely understated — catch-all Routine-X projects have 25+ tasks each, sweep capped at 500 rows)</td>
+  <td>40.4% (partial sample, true rate unknown — catch-all Routine-X projects have 25+ tasks each, sweep capped at 500 rows)</td>
   <td><span class="status-badge">ON TRACK</span></td>
   <td>—</td>
 </tr>
@@ -120,7 +120,8 @@
   <ul>
     <li>The milestone referred to as "M7" in this agent's spec is titled <strong>"M6 Grow Super Agents (currently admin)"</strong> in live Notion — only 6 active milestones exist (M1–M6), the spec's own M7 milestone Notes field flags this drift and asks for the spec to be corrected.</li>
     <li>Projects DB <code>Progress</code> field is stale (reads 0% for every project, including ones with Status=completed) and was not used; Task % below is computed from live Tasks/Megatron Status instead.</li>
-    <li>Task % for M2 and M6 is a partial sample: the QMS cleanup project (M2) and the 12 per-super-agent "Routine X" catch-all projects (M6) exceed the 500-row sweep cap applied this run to bound cost. Directional only, not exhaustive.</li>
+    <li>Task % for M2 and M6 is a partial sample: the QMS cleanup project (M2) and the 12 per-super-agent "Routine X" catch-all projects (M6) exceed the 500-row sweep cap applied this run to bound cost. Directional only, not exhaustive &mdash; the true rate for the uncounted tail is unknown (routine/catch-all backlogs can accumulate faster than they clear, so it is not safe to assume the missing tasks skew towards "done").</li>
+    <li>Bottleneck detection ran 3 of 5 spec'd checks this run (KPI at-risk classification, all-projects-blocked, M6 reviewer&gt;30 breach). Two per-task checks (&gt;50% of a milestone's tasks stuck in human-review &gt;7 days; no task completed on any linked project in &gt;30 days) were NOT evaluated &mdash; they need a full per-task timestamp sweep that was judged too expensive this run given the primary KPI analysis was already complete. No milestone should be read as "no bottleneck" on those two dimensions specifically, only on the three that were checked.</li>
   </ul>
 </div>
 <div class="footer">
