@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kent Community Health NHS Foundation Trust — User Heatmap</title>
+    <title>STAMMA event users — User Heatmap</title>
 
     <!-- Open Graph / Link Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Kent Community Health NHS Foundation Trust — User Heatmap">
-    <meta property="og:description" content="7 users across 5 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Aug 2026).">
+    <meta property="og:title" content="STAMMA event users — User Heatmap">
+    <meta property="og:description" content="9 users across 4 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Aug 2026).">
     <meta property="og:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <!-- Twitter / Slack -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kent Community Health NHS Foundation Trust — User Heatmap">
-    <meta name="twitter:description" content="7 users across 5 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Aug 2026).">
+    <meta name="twitter:title" content="STAMMA event users — User Heatmap">
+    <meta name="twitter:description" content="9 users across 4 cities — SuperPenguin geographic distribution (1 Jul 2025 – 30 Aug 2026).">
     <meta name="twitter:image" content="https://respira.github.io/heatmaps/og-image.png">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -264,23 +264,23 @@
         <div class="header-left">
             <div class="logo">SP</div>
             <div class="header-title">
-                <h1>Kent Community Health NHS Foundation Trust</h1>
+                <h1>STAMMA event users</h1>
                 <div class="subtitle">SuperPenguin User Distribution &middot; 1 Jul 2025 &ndash; 30 Aug 2026</div>
             </div>
         </div>
         <div class="stats">
             <div class="stat">
-                <div class="stat-value">7</div>
+                <div class="stat-value">9</div>
                 <div class="stat-label">Total Users</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">5</div>
+                <div class="stat-value">4</div>
                 <div class="stat-label">On Map</div>
             </div>
             <div class="stat-divider"></div>
             <div class="stat">
-                <div class="stat-value">5</div>
+                <div class="stat-value">4</div>
                 <div class="stat-label">Cities</div>
             </div>
         </div>
@@ -300,10 +300,10 @@
 
     <script>
         // City data injected by SuperTron
-        const cityData = [{"city": "Brighton", "users": 1}, {"city": "Crawley", "users": 1}, {"city": "Mansfield", "users": 1}, {"city": "Nottingham", "users": 1}, {"city": "Tenterden", "users": 1}];
+        const cityData = [{"city": "Bridgwater", "users": 1}, {"city": "Hackney", "users": 1}, {"city": "Liverpool", "users": 1}, {"city": "Walthamstow", "users": 1}];
 
         // Catchment bounds: [[swLat, swLng], [neLat, neLng]] or null for whole-UK view
-        const catchmentBounds = [[50.84, -0.145], [51.56, 1.595]];
+        const catchmentBounds = null;
 
         // UK city coordinates (~80 major cities)
         const cityCoords = {
