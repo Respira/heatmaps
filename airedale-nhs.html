@@ -257,6 +257,13 @@
             font-size: 14px;
             color: #64748b;
         }
+
+        /* Basemap look: keyless OpenStreetMap tiles are desaturated and lightened
+           here to keep the clean, light Positron-style look. Only the tile pane is
+           filtered; the heat layer and markers sit in the overlay pane and keep
+           their colours. */
+        .leaflet-container { background: #f8f9fa; }
+        .leaflet-tile-pane { filter: grayscale(100%) brightness(1.12) contrast(0.85); }
     </style>
 </head>
 <body>
@@ -471,10 +478,12 @@
             attributionControl: true
         }).setView([53.5, -2.5], 6);
 
-        // CartoDB Positron tiles (clean, minimal look)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>',
-            subdomains: 'abcd',
+        // OpenStreetMap standard tiles, keyless. The CARTO Positron tiles used
+        // before now render an "API KEY REQUIRED" watermark without a key, and
+        // this repo is public, so no key can live here. The light Positron-style
+        // look comes from the .leaflet-tile-pane filter in the stylesheet.
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
             maxZoom: 19
         }).addTo(map);
 
