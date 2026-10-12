@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>Sales | SuperPenguin & BeneTalk</title>
+  <link rel="stylesheet" href="sales/style.css">
+  <script defer src="sales/dashboard.js"></script>
+</head>
+<body>
+<header><a class="brand" href="milestones.html">SuperPenguin <span>+ BeneTalk</span></a><nav aria-label="Reporting"><a href="milestones.html">Milestones</a><a href="https://drive.google.com/file/d/18ensVPVBZwfSibQei9BjjVuj7LGwuAiE/view">Sales tracker ↗</a></nav></header>
+<main>
+  <div class="intro"><div><p class="eyebrow">COMMERCIAL PROGRESS</p><h1>Sales, in view.</h1><p class="lede">Customers, recurring revenue and the conversations that come next.</p></div><div class="refresh"><button id="refresh" type="button">Refresh figures ↻</button><p id="updated" role="status">Loading current figures…</p><span class="pill" id="health">Connecting</span></div></div>
+  <p class="notice" id="load-error" hidden></p>
+  <section aria-labelledby="revenue-heading"><div class="section-title"><h2 id="revenue-heading">Revenue today</h2><p>Three separate streams. Native currencies. No double counting.</p></div><div class="cards" id="revenue"></div></section>
+  <section aria-labelledby="milestones-heading"><div class="section-title"><h2 id="milestones-heading">The milestones behind the numbers</h2><a href="milestones.html">All company milestones →</a></div><div class="milestones" id="milestones"></div></section>
+  <section aria-labelledby="campaign-heading"><div class="section-title"><h2 id="campaign-heading">From outreach to customers</h2><p id="prospects"></p></div><div class="campaign-panel"><div class="table-scroll" tabindex="0" role="region" aria-label="Campaign weekly figures"><table><caption>Recorded campaign activity, current and previous week</caption><thead id="campaign-head"></thead><tbody id="campaign-body"></tbody></table></div><p class="small" id="campaign-basis"></p><div class="costs" id="costs"></div></div></section>
+  <section aria-labelledby="history-heading"><div class="section-title"><h2 id="history-heading">A growing history</h2><p>Annualised recurring revenue, one point per day. Weekly milestone history retained.</p></div><div class="trends" id="history"></div></section>
+  <section class="coverage" aria-labelledby="coverage-heading"><h2 id="coverage-heading">What the figures can tell us</h2><ul id="coverage"></ul><div id="sources" class="sources"></div></section>
+</main>
+<footer><p>Aggregate business figures only. This page is public to anyone with its address and asks search engines not to index it.</p><p>Collected revenue, refunds, recurring revenue and attributed campaign results are different measures. Sources refresh hourly and may include provider reporting delays.</p><a href="milestones.html">Company milestones</a> · <a href="milestones-history/">Weekly history</a></footer>
+<noscript><p>Enable JavaScript to read this dashboard, or <a href="sales/data.json">open the aggregate snapshot</a>.</p></noscript>
+</body>
+</html>

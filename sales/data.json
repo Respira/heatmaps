@@ -1,0 +1,363 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-12T13:09:39+00:00",
+  "refresh_minutes": 60,
+  "stale_after_minutes": 150,
+  "sources": {
+    "stripe": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "paying_customers": 1,
+        "paying_subscriptions": 1,
+        "seats": 3,
+        "mrr": {
+          "GBP": 37.5
+        },
+        "arr": {
+          "GBP": 450.0
+        },
+        "arr_basis": "MRR × 12",
+        "paid_invoices": {
+          "amounts": {},
+          "count": 0,
+          "from": "2026-09-30T23:00:00+00:00",
+          "to": "2026-10-12T13:09:39+00:00",
+          "out_of_band_excluded": 0,
+          "unsupported": 0,
+          "basis": "Positive paid invoices, excluding tests and internal activity"
+        },
+        "cash_collected": null,
+        "refunds": null,
+        "net_proceeds": null,
+        "cash_coverage": "Payment and refund scope unavailable. Paid invoices are shown separately."
+      }
+    },
+    "therapyapp": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "mrr": {
+          "value": 0.0,
+          "unit": "USD",
+          "period": "P28D"
+        },
+        "revenue": {
+          "value": 0.0,
+          "unit": "USD",
+          "period": "P28D"
+        },
+        "active_subscriptions": {
+          "value": 0,
+          "unit": "#",
+          "period": "P0D"
+        },
+        "active_trials": {
+          "value": 0,
+          "unit": "#",
+          "period": "P0D"
+        },
+        "new_customers": {
+          "value": 517,
+          "unit": "#",
+          "period": "P28D"
+        },
+        "active_users": {
+          "value": 642,
+          "unit": "#",
+          "period": "P28D"
+        },
+        "arr": {
+          "value": 0.0,
+          "unit": "USD",
+          "basis": "MRR × 12"
+        },
+        "revenue_basis": "RevenueCat revenue, provider rolling period. Not bank settlement or net proceeds.",
+        "refunds": null,
+        "net_proceeds": null
+      }
+    },
+    "benetalk": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "mrr": {
+          "value": 439.0,
+          "unit": "USD",
+          "period": "P28D"
+        },
+        "revenue": {
+          "value": 402.0,
+          "unit": "USD",
+          "period": "P28D"
+        },
+        "active_subscriptions": {
+          "value": 133,
+          "unit": "#",
+          "period": "P0D"
+        },
+        "active_trials": {
+          "value": 0,
+          "unit": "#",
+          "period": "P0D"
+        },
+        "new_customers": {
+          "value": 92,
+          "unit": "#",
+          "period": "P28D"
+        },
+        "active_users": {
+          "value": 196,
+          "unit": "#",
+          "period": "P28D"
+        },
+        "arr": {
+          "value": 5268.0,
+          "unit": "USD",
+          "basis": "MRR × 12"
+        },
+        "revenue_basis": "RevenueCat revenue, provider rolling period. Not bank settlement or net proceeds.",
+        "refunds": null,
+        "net_proceeds": null
+      }
+    },
+    "campaigns": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "weeks": [
+          {
+            "week": "2026-W42",
+            "as_of": "2026-10-12T13:09:40Z",
+            "counts": {
+              "contacts_started": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "sends": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "delivered": {
+                "value": 0,
+                "coverage": "partial",
+                "bound": "none"
+              },
+              "replies_all": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "positive": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "demos_booked": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "demos_held": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "trials_or_free_signups": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "paying": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "bounces": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "unsubscribes": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "uncertain_sends": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "website_enquiries": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              }
+            },
+            "costs": {
+              "cash_gbp": {
+                "value": 0.0,
+                "coverage": "partial",
+                "bound": "none"
+              },
+              "tool_cash_gbp": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "tokens_total": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              }
+            },
+            "coverage": "partial"
+          },
+          {
+            "week": "2026-W41",
+            "as_of": "2026-10-12T13:09:41Z",
+            "counts": {
+              "contacts_started": {
+                "value": 20,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "sends": {
+                "value": 20,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "delivered": {
+                "value": 20,
+                "coverage": "partial",
+                "bound": "none"
+              },
+              "replies_all": {
+                "value": 0,
+                "coverage": "complete",
+                "bound": "exact"
+              },
+              "positive": {
+                "value": 0,
+                "coverage": "complete",
+                "bound": "exact"
+              },
+              "demos_booked": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "demos_held": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "trials_or_free_signups": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "paying": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "bounces": {
+                "value": 0,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              },
+              "unsubscribes": {
+                "value": 0,
+                "coverage": "complete",
+                "bound": "exact"
+              },
+              "uncertain_sends": {
+                "value": 18,
+                "coverage": "complete",
+                "bound": "exact"
+              },
+              "website_enquiries": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              }
+            },
+            "costs": {
+              "cash_gbp": {
+                "value": 0.0,
+                "coverage": "partial",
+                "bound": "none"
+              },
+              "tool_cash_gbp": {
+                "value": null,
+                "coverage": "unknown",
+                "bound": "none"
+              },
+              "tokens_total": {
+                "value": 397112,
+                "coverage": "lower_bound",
+                "bound": "lower"
+              }
+            },
+            "coverage": "partial"
+          }
+        ],
+        "sourced_prospects_total": 220,
+        "sourced_basis": "Prospect records retained in the sales engine, all time. Not replies or qualified opportunities.",
+        "delivery_basis": "Delivered is the engine estimate of sends minus recorded bounces, not proof of inbox receipt.",
+        "conversion_basis": "Unconnected booking, signup or payment attribution stays unknown. Existing paying customers are not campaign wins."
+      }
+    },
+    "milestones": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "targets": [
+          {
+            "milestone": "M3",
+            "label": "B2B sales",
+            "target_arr_gbp": {
+              "2026": 9000.0,
+              "2027": 90000.0
+            },
+            "target_last_edited": "2026-10-08T23:41:00.000Z",
+            "url": "https://www.notion.so/36558d4eca6581828c98f0a00f0a4f26"
+          },
+          {
+            "milestone": "M4",
+            "label": "B2C sales",
+            "target_arr_gbp": {
+              "2026": 5500.0,
+              "2027": 21000.0
+            },
+            "target_last_edited": "2026-10-08T23:41:00.000Z",
+            "url": "https://www.notion.so/36558d4eca65819abad8c058334a7036"
+          }
+        ]
+      }
+    },
+    "allowance": {
+      "status": "ok",
+      "attempted_at": "2026-10-12T13:09:39+00:00",
+      "last_success_at": "2026-10-12T13:09:39+00:00",
+      "data": {
+        "remaining_points": 0,
+        "used_percent": 100.0,
+        "research_worker_limit": 14,
+        "state": "measured",
+        "reading_at": "2026-10-12T13:07:20.471959+00:00",
+        "reset_at": "2026-10-13T08:23:18.832003+00:00",
+        "active_reservations": 0,
+        "basis": "Weekly native research allowance. Reservations and worker limit are not completed work."
+      }
+    }
+  }
+}
