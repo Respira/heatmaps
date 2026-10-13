@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-13T04:16:14+00:00",
+  "generated_at": "2026-10-13T05:15:52+00:00",
   "refresh_minutes": 60,
   "stale_after_minutes": 150,
   "sources": {
     "stripe": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "paying_customers": 1,
         "paying_subscriptions": 1,
@@ -23,7 +23,7 @@
           "amounts": {},
           "count": 0,
           "from": "2026-09-30T23:00:00+00:00",
-          "to": "2026-10-13T04:16:14+00:00",
+          "to": "2026-10-13T05:15:52+00:00",
           "out_of_band_excluded": 0,
           "unsupported": 0,
           "basis": "Positive paid invoices, excluding tests and internal activity"
@@ -38,14 +38,14 @@
           "other_entries_excluded": 1
         },
         "ledger_from": "2026-09-30T23:00:00+00:00",
-        "ledger_to": "2026-10-13T04:16:14+00:00",
+        "ledger_to": "2026-10-13T05:15:52+00:00",
         "cash_coverage": "Posted payment and refund entries this month, in Stripe balance currencies. Net deducts fees on those entries. Payouts, disputes, adjustments and other fees are excluded. These figures are not bank receipts."
       }
     },
     "therapyapp": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "mrr": {
           "value": 0.0,
@@ -73,7 +73,7 @@
           "period": "P28D"
         },
         "active_users": {
-          "value": 635,
+          "value": 634,
           "unit": "#",
           "period": "P28D"
         },
@@ -89,8 +89,8 @@
     },
     "benetalk": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "mrr": {
           "value": 440.0,
@@ -98,7 +98,7 @@
           "period": "P28D"
         },
         "revenue": {
-          "value": 397.0,
+          "value": 396.0,
           "unit": "USD",
           "period": "P28D"
         },
@@ -134,13 +134,13 @@
     },
     "campaigns": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "weeks": [
           {
             "week": "2026-W42",
-            "as_of": "2026-10-13T04:16:14Z",
+            "as_of": "2026-10-13T05:15:52Z",
             "counts": {
               "contacts_started": {
                 "value": 0,
@@ -229,7 +229,7 @@
           },
           {
             "week": "2026-W41",
-            "as_of": "2026-10-13T04:16:15Z",
+            "as_of": "2026-10-13T05:15:53Z",
             "counts": {
               "contacts_started": {
                 "value": 20,
@@ -325,8 +325,8 @@
     },
     "milestones": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "targets": [
           {
@@ -354,14 +354,14 @@
     },
     "allowance": {
       "status": "ok",
-      "attempted_at": "2026-10-13T04:16:14+00:00",
-      "last_success_at": "2026-10-13T04:16:14+00:00",
+      "attempted_at": "2026-10-13T05:15:52+00:00",
+      "last_success_at": "2026-10-13T05:15:52+00:00",
       "data": {
         "remaining_points": 0,
         "used_percent": 100.0,
         "research_worker_limit": 14,
         "state": "measured",
-        "reading_at": "2026-10-13T04:15:10.404851+00:00",
+        "reading_at": "2026-10-13T05:10:53.804362+00:00",
         "reset_at": "2026-10-13T08:23:18.832003+00:00",
         "active_reservations": 0,
         "basis": "Weekly native research allowance. Reservations and worker limit are not completed work."
