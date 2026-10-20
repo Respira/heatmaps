@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-20T18:16:01+00:00",
+  "generated_at": "2026-10-20T19:15:49+00:00",
   "refresh_minutes": 60,
   "stale_after_minutes": 150,
   "sources": {
     "stripe": {
       "status": "ok",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
-      "last_success_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
+      "last_success_at": "2026-10-20T19:15:49+00:00",
       "data": {
         "paying_customers": 1,
         "paying_subscriptions": 1,
@@ -23,7 +23,7 @@
           "amounts": {},
           "count": 0,
           "from": "2026-09-30T23:00:00+00:00",
-          "to": "2026-10-20T18:16:01+00:00",
+          "to": "2026-10-20T19:15:49+00:00",
           "out_of_band_excluded": 0,
           "unsupported": 0,
           "basis": "Positive paid invoices, excluding tests and internal activity"
@@ -38,14 +38,14 @@
           "other_entries_excluded": 1
         },
         "ledger_from": "2026-09-30T23:00:00+00:00",
-        "ledger_to": "2026-10-20T18:16:01+00:00",
+        "ledger_to": "2026-10-20T19:15:49+00:00",
         "cash_coverage": "Posted payment and refund entries this month, in Stripe balance currencies. Net deducts fees on those entries. Payouts, disputes, adjustments and other fees are excluded. These figures are not bank receipts."
       }
     },
     "therapyapp": {
       "status": "ok",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
-      "last_success_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
+      "last_success_at": "2026-10-20T19:15:49+00:00",
       "data": {
         "mrr": {
           "value": 0.0,
@@ -68,12 +68,12 @@
           "period": "P0D"
         },
         "new_customers": {
-          "value": 494,
+          "value": 492,
           "unit": "#",
           "period": "P28D"
         },
         "active_users": {
-          "value": 583,
+          "value": 582,
           "unit": "#",
           "period": "P28D"
         },
@@ -89,21 +89,21 @@
     },
     "benetalk": {
       "status": "ok",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
-      "last_success_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
+      "last_success_at": "2026-10-20T19:15:49+00:00",
       "data": {
         "mrr": {
-          "value": 435.0,
+          "value": 434.0,
           "unit": "USD",
           "period": "P28D"
         },
         "revenue": {
-          "value": 406.0,
+          "value": 399.0,
           "unit": "USD",
           "period": "P28D"
         },
         "active_subscriptions": {
-          "value": 134,
+          "value": 133,
           "unit": "#",
           "period": "P0D"
         },
@@ -123,7 +123,7 @@
           "period": "P28D"
         },
         "arr": {
-          "value": 5220.0,
+          "value": 5208.0,
           "unit": "USD",
           "basis": "MRR × 12"
         },
@@ -134,7 +134,7 @@
     },
     "campaigns": {
       "status": "stale",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
       "last_success_at": "2026-10-20T17:15:49+00:00",
       "error": "ValueError",
       "data": {
@@ -326,8 +326,8 @@
     },
     "milestones": {
       "status": "ok",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
-      "last_success_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
+      "last_success_at": "2026-10-20T19:15:49+00:00",
       "data": {
         "targets": [
           {
@@ -355,8 +355,8 @@
     },
     "allowance": {
       "status": "ok",
-      "attempted_at": "2026-10-20T18:16:01+00:00",
-      "last_success_at": "2026-10-20T18:16:01+00:00",
+      "attempted_at": "2026-10-20T19:15:49+00:00",
+      "last_success_at": "2026-10-20T19:15:49+00:00",
       "data": {
         "remaining_points": null,
         "used_percent": null,
