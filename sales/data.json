@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-21T12:15:31+00:00",
+  "generated_at": "2026-10-21T13:15:44+00:00",
   "refresh_minutes": 60,
   "stale_after_minutes": 150,
   "sources": {
     "stripe": {
       "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
-      "last_success_at": "2026-10-21T12:15:31+00:00",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
+      "last_success_at": "2026-10-21T13:15:44+00:00",
       "data": {
         "paying_customers": 1,
         "paying_subscriptions": 1,
@@ -23,7 +23,7 @@
           "amounts": {},
           "count": 0,
           "from": "2026-09-30T23:00:00+00:00",
-          "to": "2026-10-21T12:15:31+00:00",
+          "to": "2026-10-21T13:15:44+00:00",
           "out_of_band_excluded": 0,
           "unsupported": 0,
           "basis": "Positive paid invoices, excluding tests and internal activity"
@@ -38,14 +38,14 @@
           "other_entries_excluded": 1
         },
         "ledger_from": "2026-09-30T23:00:00+00:00",
-        "ledger_to": "2026-10-21T12:15:31+00:00",
+        "ledger_to": "2026-10-21T13:15:44+00:00",
         "cash_coverage": "Posted payment and refund entries this month, in Stripe balance currencies. Net deducts fees on those entries. Payouts, disputes, adjustments and other fees are excluded. These figures are not bank receipts."
       }
     },
     "therapyapp": {
       "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
-      "last_success_at": "2026-10-21T12:15:31+00:00",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
+      "last_success_at": "2026-10-21T13:15:44+00:00",
       "data": {
         "mrr": {
           "value": 0.0,
@@ -68,7 +68,7 @@
           "period": "P0D"
         },
         "new_customers": {
-          "value": 480,
+          "value": 481,
           "unit": "#",
           "period": "P28D"
         },
@@ -89,8 +89,8 @@
     },
     "benetalk": {
       "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
-      "last_success_at": "2026-10-21T12:15:31+00:00",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
+      "last_success_at": "2026-10-21T13:15:44+00:00",
       "data": {
         "mrr": {
           "value": 427.0,
@@ -98,7 +98,7 @@
           "period": "P28D"
         },
         "revenue": {
-          "value": 367.0,
+          "value": 362.0,
           "unit": "USD",
           "period": "P28D"
         },
@@ -134,26 +134,26 @@
     },
     "campaigns": {
       "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
-      "last_success_at": "2026-10-21T12:15:31+00:00",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
+      "last_success_at": "2026-10-21T13:15:44+00:00",
       "data": {
         "weeks": [
           {
             "week": "2026-W43",
-            "as_of": "2026-10-21T12:15:34Z",
+            "as_of": "2026-10-21T13:15:46Z",
             "counts": {
               "contacts_started": {
-                "value": 21,
+                "value": 22,
                 "coverage": "lower_bound",
                 "bound": "lower"
               },
               "sends": {
-                "value": 21,
+                "value": 22,
                 "coverage": "lower_bound",
                 "bound": "lower"
               },
               "delivered": {
-                "value": 21,
+                "value": 22,
                 "coverage": "partial",
                 "bound": "none"
               },
@@ -229,7 +229,7 @@
           },
           {
             "week": "2026-W42",
-            "as_of": "2026-10-21T12:15:35Z",
+            "as_of": "2026-10-21T13:15:47Z",
             "counts": {
               "contacts_started": {
                 "value": 71,
@@ -283,8 +283,8 @@
               },
               "unsubscribes": {
                 "value": 0,
-                "coverage": "lower_bound",
-                "bound": "lower"
+                "coverage": "complete",
+                "bound": "exact"
               },
               "uncertain_sends": {
                 "value": 1,
@@ -317,7 +317,7 @@
             "coverage": "partial"
           }
         ],
-        "sourced_prospects_total": 639,
+        "sourced_prospects_total": 640,
         "sourced_basis": "Prospect records retained in the sales engine, all time. Not replies or qualified opportunities.",
         "delivery_basis": "Delivered is the engine estimate of sends minus recorded bounces, not proof of inbox receipt.",
         "conversion_basis": "Unconnected booking, signup or payment attribution stays unknown. Existing paying customers are not campaign wins."
@@ -325,8 +325,8 @@
     },
     "milestones": {
       "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
-      "last_success_at": "2026-10-21T12:15:31+00:00",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
+      "last_success_at": "2026-10-21T13:15:44+00:00",
       "data": {
         "targets": [
           {
@@ -353,9 +353,10 @@
       }
     },
     "allowance": {
-      "status": "ok",
-      "attempted_at": "2026-10-21T12:15:31+00:00",
+      "status": "stale",
+      "attempted_at": "2026-10-21T13:15:44+00:00",
       "last_success_at": "2026-10-21T12:15:31+00:00",
+      "error": "ValueError",
       "data": {
         "remaining_points": null,
         "used_percent": null,
