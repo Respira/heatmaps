@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-10-25T00:15:05+00:00",
+  "generated_at": "2026-10-25T01:15:49+00:00",
   "refresh_minutes": 60,
   "stale_after_minutes": 150,
   "sources": {
     "stripe": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "paying_customers": 1,
         "paying_subscriptions": 1,
@@ -23,7 +23,7 @@
           "amounts": {},
           "count": 0,
           "from": "2026-09-30T23:00:00+00:00",
-          "to": "2026-10-25T00:15:05+00:00",
+          "to": "2026-10-25T01:15:49+00:00",
           "out_of_band_excluded": 0,
           "unsupported": 0,
           "basis": "Positive paid invoices, excluding tests and internal activity"
@@ -38,14 +38,14 @@
           "other_entries_excluded": 1
         },
         "ledger_from": "2026-09-30T23:00:00+00:00",
-        "ledger_to": "2026-10-25T00:15:05+00:00",
+        "ledger_to": "2026-10-25T01:15:49+00:00",
         "cash_coverage": "Posted payment and refund entries this month, in Stripe balance currencies. Net deducts fees on those entries. Payouts, disputes, adjustments and other fees are excluded. These figures are not bank receipts."
       }
     },
     "therapyapp": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "mrr": {
           "value": 0.0,
@@ -89,21 +89,21 @@
     },
     "benetalk": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "mrr": {
-          "value": 427.0,
+          "value": 431.0,
           "unit": "USD",
           "period": "P28D"
         },
         "revenue": {
-          "value": 394.0,
+          "value": 398.0,
           "unit": "USD",
           "period": "P28D"
         },
         "active_subscriptions": {
-          "value": 131,
+          "value": 132,
           "unit": "#",
           "period": "P0D"
         },
@@ -118,12 +118,12 @@
           "period": "P28D"
         },
         "active_users": {
-          "value": 196,
+          "value": 197,
           "unit": "#",
           "period": "P28D"
         },
         "arr": {
-          "value": 5124.0,
+          "value": 5172.0,
           "unit": "USD",
           "basis": "MRR × 12"
         },
@@ -134,13 +134,13 @@
     },
     "campaigns": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "weeks": [
           {
             "week": "2026-W43",
-            "as_of": "2026-10-25T00:15:08Z",
+            "as_of": "2026-10-25T01:16:20Z",
             "counts": {
               "contacts_started": {
                 "value": 22,
@@ -229,7 +229,7 @@
           },
           {
             "week": "2026-W42",
-            "as_of": "2026-10-25T00:15:11Z",
+            "as_of": "2026-10-25T01:16:22Z",
             "counts": {
               "contacts_started": {
                 "value": 71,
@@ -325,8 +325,8 @@
     },
     "milestones": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "targets": [
           {
@@ -354,8 +354,8 @@
     },
     "allowance": {
       "status": "ok",
-      "attempted_at": "2026-10-25T00:15:05+00:00",
-      "last_success_at": "2026-10-25T00:15:05+00:00",
+      "attempted_at": "2026-10-25T01:15:49+00:00",
+      "last_success_at": "2026-10-25T01:15:49+00:00",
       "data": {
         "remaining_points": null,
         "used_percent": null,
