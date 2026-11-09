@@ -323,35 +323,6 @@
         "conversion_basis": "Unconnected booking, signup or payment attribution stays unknown. Existing paying customers are not campaign wins."
       }
     },
-    "milestones": {
-      "status": "ok",
-      "attempted_at": "2026-11-09T10:15:26+00:00",
-      "last_success_at": "2026-11-09T10:15:26+00:00",
-      "data": {
-        "targets": [
-          {
-            "milestone": "M3",
-            "label": "B2B sales",
-            "target_arr_gbp": {
-              "2026": 9000.0,
-              "2027": 90000.0
-            },
-            "target_last_edited": "2026-11-06T01:01:00.000Z",
-            "url": "https://www.notion.so/36558d4eca6581828c98f0a00f0a4f26"
-          },
-          {
-            "milestone": "M4",
-            "label": "B2C sales",
-            "target_arr_gbp": {
-              "2026": 5500.0,
-              "2027": 21000.0
-            },
-            "target_last_edited": "2026-11-06T01:01:00.000Z",
-            "url": "https://www.notion.so/36558d4eca65819abad8c058334a7036"
-          }
-        ]
-      }
-    },
     "allowance": {
       "status": "ok",
       "attempted_at": "2026-11-09T10:15:26+00:00",

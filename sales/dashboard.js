@@ -7,7 +7,7 @@ const money = (values,empty="No paid invoices recorded") => Object.keys(values||
 const ledgerMoney = values => values===null||values===undefined ? "Unavailable" : money(values,"No eligible entries");
 const date = s => s ? new Intl.DateTimeFormat("en-GB",{dateStyle:"medium",timeStyle:"short",timeZone:"Europe/London"}).format(new Date(s))+" UK" : "No successful read";
 const period = p => p==="P28D"?"last 28 days":p==="P0D"?"current":p;
-const label = {stripe:"Stripe · B2B",therapyapp:"RevenueCat · SuperPenguin",benetalk:"RevenueCat · BeneTalk",campaigns:"Sales engine",milestones:"Company milestones",allowance:"Research allowance"};
+const label = {stripe:"Stripe · B2B",therapyapp:"RevenueCat · SuperPenguin",benetalk:"RevenueCat · BeneTalk",campaigns:"Sales engine",allowance:"Research allowance"};
 const old = r => r.status!=="ok" || !r.last_success_at || Date.now()-Date.parse(r.last_success_at)>150*60000;
 const statePill = row => el("span","pill"+(old(row)?" warn":""),old(row)?(row.data?"Last known":"Unavailable"):"Current");
 const line = (name,value) => {const n=el("div","secondary");n.append(el("span","",name),el("strong","",value));return n;};
@@ -24,19 +24,6 @@ function revenues(data){
     }
     $("revenue").append(c);
   }
-}
-function milestones(data){
-  $("milestones").replaceChildren();const targets=data.sources.milestones.data?.targets||[];
-  for(const v of targets){const c=el("article","milestone"),head=el("div","milestone-title"),a=el("a","",`${v.milestone} · ${v.label} ↗`);a.href=v.url;head.append(a,statePill(data.sources.milestones));c.append(head);
-    const b2b=data.sources.stripe.data?.arr?.GBP,t=v.target_arr_gbp["2026"];
-    if(v.milestone==="M3"){
-      c.append(el("p","value",`${fmt(b2b,"GBP")} ARR`),el("p","small",`End 2026 target: ${fmt(t,"GBP")} ARR`));
-      if(b2b!==undefined&&t>0){const bar=el("div","bar"),fill=el("span");fill.style.width=`${Math.min(100,b2b/t*100)}%`;bar.setAttribute("role","img");bar.setAttribute("aria-label",`${(b2b/t*100).toFixed(1)}% of 2026 target`);bar.append(fill);c.append(bar,el("p","small",`${(b2b/t*100).toFixed(1)}% of target · ${fmt(v.target_arr_gbp["2027"],"GBP")} target for 2027`));}
-    }else{
-      c.append(el("p","value",`${fmt(data.sources.benetalk.data?.arr?.value,"USD")} / ${fmt(data.sources.therapyapp.data?.arr?.value,"USD")}`),el("p","small","BeneTalk / SuperPenguin annualised ARR"),el("p","small",`Combined end 2026 target: ${fmt(t,"GBP")} ARR. Native USD actuals stay separate from GBP targets until a verified conversion is available.`),el("p","small",`End 2027 target: ${fmt(v.target_arr_gbp["2027"],"GBP")} ARR`));
-    }$("milestones").append(c);
-  }
-  if(!targets.length)$("milestones").append(el("p","small","Milestone targets are currently unavailable."));
 }
 const observed = f => f?.value===null||f?.value===undefined ? "Not connected" : `${f.bound==="lower"?"At least ":""}${new Intl.NumberFormat("en-GB").format(f.value)}${f.coverage==="partial"?" · partial":""}`;
 function campaigns(data){const c=data.sources.campaigns.data;$("campaign-head").replaceChildren();$("campaign-body").replaceChildren();$("costs").replaceChildren();if(!c){$("prospects").textContent="Campaign source unavailable";return;}
@@ -55,5 +42,5 @@ function history(points){$("history").replaceChildren();for(const [key,title,uni
   $("history").append(card);
 }}
 function coverage(data){$("coverage").replaceChildren();for(const text of ["Unknown figures stay unknown. Partial and lower-bound counts include only the evidence currently captured.","Paid Stripe invoices and posted payment/refund entries have separate dates and definitions. Neither proves receipt in the bank. Net covers the payment/refund entries only.","RevenueCat app figures use the provider’s period and USD reporting. New app accounts and active subscriptions are different from distinct paying customers.","Bookings, signups and campaign payment attribution need their own complete sources. Do not use total existing revenue as a campaign conversion count.","The testing-week review will improve this same dashboard from real delivery and customer evidence."])$("coverage").append(el("li","",text));$("sources").replaceChildren();for(const [k,r] of Object.entries(data.sources)){const n=el("div");n.append(el("strong","",label[k]),el("span","",`${old(r)?"Last known · ":"Read · "}${date(r.last_success_at)}`));$("sources").append(n);}}
-async function refresh(){const btn=$("refresh");btn.disabled=true;try{const [a,b]=await Promise.all([fetch("sales/data.json",{cache:"no-store"}),fetch("sales/history.json",{cache:"no-store"})]);if(!a.ok||!b.ok)throw Error("Snapshot unavailable");const [data,points]=await Promise.all([a.json(),b.json()]);if(data.schema_version!==1)throw Error("Unsupported snapshot");revenues(data);milestones(data);campaigns(data);history(points);coverage(data);$("updated").textContent=`Snapshot ${date(data.generated_at)}`;const partial=Object.values(data.sources).some(old);$("health").className="pill"+(partial?" warn":"");$("health").textContent=partial?"Some sources need attention":"Sources fetched · coverage below";$("load-error").hidden=true;}catch(e){$("load-error").textContent="The latest snapshot could not be loaded. Any figures already shown are from the previous load. Please try again shortly.";$("load-error").hidden=false;$("health").textContent="Refresh unavailable";$("health").className="pill warn";}finally{btn.disabled=false;}}
+async function refresh(){const btn=$("refresh");btn.disabled=true;try{const [a,b]=await Promise.all([fetch("sales/data.json",{cache:"no-store"}),fetch("sales/history.json",{cache:"no-store"})]);if(!a.ok||!b.ok)throw Error("Snapshot unavailable");const [data,points]=await Promise.all([a.json(),b.json()]);if(data.schema_version!==1)throw Error("Unsupported snapshot");revenues(data);campaigns(data);history(points);coverage(data);$("updated").textContent=`Snapshot ${date(data.generated_at)}`;const partial=Object.values(data.sources).some(old);$("health").className="pill"+(partial?" warn":"");$("health").textContent=partial?"Some sources need attention":"Sources fetched · coverage below";$("load-error").hidden=true;}catch(e){$("load-error").textContent="The latest snapshot could not be loaded. Any figures already shown are from the previous load. Please try again shortly.";$("load-error").hidden=false;$("health").textContent="Refresh unavailable";$("health").className="pill warn";}finally{btn.disabled=false;}}
 $("refresh").addEventListener("click",refresh);refresh();setInterval(refresh,5*60*1000);

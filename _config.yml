@@ -1,0 +1,6 @@
+# Milestones remain internal. Jordi authorised public heatmaps and sales on 9 November 2026.
+# Keep Jekyll enabled so old reporting jobs cannot republish milestone pages.
+exclude:
+  - milestones.html
+  - milestones-history
+  - "milestones-*"
